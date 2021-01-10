@@ -1,4 +1,4 @@
-import 'package:botonera_app/SoundsPage/ExporeSounds.dart';
+import 'package:botonera_app/SoundsPage/ExploreSounds.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -40,13 +40,21 @@ class NavigationBarImpl extends State<NavigationBar> {
         fixedColor: Colors.black,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.search), title: Text('Explorar')),
+              // ignore: deprecated_member_use
+              icon: Icon(Icons.search),
+              title: Text('Explorar')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.category), title: Text('Categorias')),
+              // ignore: deprecated_member_use
+              icon: Icon(Icons.category),
+              title: Text('Categorias')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.list), title: Text('Tus listas')),
+              // ignore: deprecated_member_use
+              icon: Icon(Icons.list),
+              title: Text('Tus listas')),
           BottomNavigationBarItem(
-              icon: BackButtonIcon(), title: Text('Volver')),
+              // ignore: deprecated_member_use
+              icon: BackButtonIcon(),
+              title: Text('Volver')),
         ],
       ),
     );

@@ -1,11 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class BotonCard extends StatefulWidget {
-  State<StatefulWidget> createState() => BotonCardImpl();
+  final String audio;
+  BotonCard({@required this.audio});
+
+  State<StatefulWidget> createState() => BotonCardImpl(audio: audio);
 }
 
 class BotonCardImpl extends State<BotonCard> {
+  final String audio;
+  AudioPlayer audioPlayer;
+  AudioCache audioCache;
+
+  BotonCardImpl({@required this.audio});
+
+  @override
+  void initState() {
+    super.initState();
+
+    audioPlayer = AudioPlayer();
+    audioCache = AudioCache(fixedPlayer: audioPlayer);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -17,8 +36,10 @@ class BotonCardImpl extends State<BotonCard> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               RaisedButton(
-                child: Text('Test'),
-                onPressed: () {},
+                child: Text('Click'),
+                onPressed: () {
+                  audioCache.play(audio + '.mp3');
+                },
               ),
               SizedBox(
                 height: 8,
@@ -27,7 +48,7 @@ class BotonCardImpl extends State<BotonCard> {
                 height: 8,
               ),
               Text(
-                'Nombre del Boton',
+                audio,
                 textAlign: TextAlign.center,
               ),
               SizedBox(

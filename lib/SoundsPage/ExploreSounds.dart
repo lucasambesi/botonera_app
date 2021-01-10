@@ -9,12 +9,8 @@ class PantallaExplorar extends StatefulWidget {
 class PantallaExplorarImpl extends State<PantallaExplorar> {
   @override
   List<Widget> _cards = [
-    BotonCard(),
-    BotonCard(),
-    BotonCard(),
-    BotonCard(),
-    BotonCard(),
-    BotonCard(),
+    BotonCard(audio: 'amo sus errores'),
+    BotonCard(audio: 'aver aver que paso'),
   ];
 
   Widget build(BuildContext context) {

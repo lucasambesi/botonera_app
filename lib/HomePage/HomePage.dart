@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:botonera_app/SoundsPage/BottomNavigationBarSounds.dart';
-import 'package:botonera_app/SettingPage/SettingPage.dart';
+import 'package:botonera_app/SenttingsPage/SenttingsPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);

@@ -7,7 +7,7 @@ class NavigationBar extends StatefulWidget {
 }
 
 class NavigationBarImpl extends State<NavigationBar> {
-  int _currentIndex = 0;
+  int _currentIndex = 2;
 
   final List<Widget> _children = [
     PantallaExplorar(),

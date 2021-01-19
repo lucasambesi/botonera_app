@@ -40,22 +40,23 @@ class BaseLayout extends StatelessWidget {
             flex: 4,
           ),
           Flexible(
-              flex: 1,
-              child: ButtonTheme(
-                minWidth: 200,
-                height: 35,
-                child: RaisedButton(
-                  child: Text('Sonidos'),
-                  color: Colors.yellow,
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => NavigationBar(),
-                      ),
-                    );
-                  },
-                ),
-              )),
+            flex: 1,
+            child: ButtonTheme(
+              minWidth: 200,
+              height: 35,
+              child: RaisedButton(
+                child: Text('Sonidos'),
+                color: Colors.yellow,
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => NavigationBar(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
           SizedBox(height: 30),
           Flexible(
             flex: 1,

@@ -34,48 +34,80 @@ class BotonCardImpl extends State<BotonCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              RaisedButton(
-                child: Text('Click'),
-                onPressed: () {
-                  audioCache.play(audio + '.mp3');
-                },
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                audio,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Center(
-                  child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.more_vert),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.favorite),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.add),
-                    onPressed: () {},
-                  ),
-                ],
-              )),
-            ],
+            children: cardImpl,
           ),
         ),
+      ),
+    );
+  }
+
+  List<Widget> get cardImpl {
+    return <Widget>[
+      CardAudio(audioCache: audioCache, audio: audio),
+      SizedBox(
+        height: 8,
+      ),
+      SizedBox(
+        height: 8,
+      ),
+      Text(
+        audio,
+        textAlign: TextAlign.center,
+      ),
+      SizedBox(
+        height: 8,
+      ),
+      IconosInferiores(),
+    ];
+  }
+}
+
+class CardAudio extends StatelessWidget {
+  const CardAudio({
+    Key key,
+    @required this.audioCache,
+    @required this.audio,
+  }) : super(key: key);
+
+  final AudioCache audioCache;
+  final String audio;
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      child: Text('Click'),
+      onPressed: () {
+        audioCache.play(audio + '.mp3');
+      },
+    );
+  }
+}
+
+class IconosInferiores extends StatelessWidget {
+  const IconosInferiores({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }

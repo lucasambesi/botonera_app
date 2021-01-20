@@ -26,11 +26,15 @@ class PantallaConfiguracionImpl extends State<PantallaConfiguracion> {
           RaisedButton(
             child: Text('leer'),
             onPressed: () {
-              FileUtils.readFromFile().then((contents) {
-                setState(() {
-                  text = contents;
-                });
-              });
+              FileUtils.readFromFile().then(
+                (contents) {
+                  setState(
+                    () {
+                      text = contents;
+                    },
+                  );
+                },
+              );
             },
           ),
           TextField(

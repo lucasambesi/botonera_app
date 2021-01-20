@@ -43,15 +43,18 @@ class FileUtils {
   static Future<List<Widget>> getAudios() async {
     List<Widget> _widgets = new List<Widget>();
 
-    getListaAudios().then((content) {
-      for (int i = 0; i < content.length; i++) {
-        _widgets.add(BotonCard(
-          audio: content[i].toString(),
-        ));
-        i++;
-      }
-    });
-
+    getListaAudios().then(
+      (content) {
+        for (int i = 0; i < content.length; i++) {
+          _widgets.add(
+            BotonCard(
+              audio: content[i].toString(),
+            ),
+          );
+          i++;
+        }
+      },
+    );
     return _widgets;
   }
 }

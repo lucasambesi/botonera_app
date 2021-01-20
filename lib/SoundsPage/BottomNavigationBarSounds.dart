@@ -2,15 +2,15 @@ import 'package:botonera_app/SoundsPage/ExploreSounds.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NavigationBar extends StatefulWidget {
-  State<StatefulWidget> createState() => NavigationBarImpl();
+class BarraNavegacion extends StatefulWidget {
+  State<StatefulWidget> createState() => BarraNavegacionImpl();
 }
 
-class NavigationBarImpl extends State<NavigationBar> {
+class BarraNavegacionImpl extends State<BarraNavegacion> {
   int _currentIndex = 2;
 
   final List<Widget> _children = [
-    PantallaExplorar(),
+    PantallaExplorarSonidos(),
     Container(
       child: Card(
         child: Text('Categorias'),
@@ -31,32 +31,36 @@ class NavigationBarImpl extends State<NavigationBar> {
       body: Center(
         child: _children[_currentIndex],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: onTabTapped,
-        iconSize: 24,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.yellow[300],
-        fixedColor: Colors.black,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              // ignore: deprecated_member_use
-              icon: Icon(Icons.search),
-              title: Text('Explorar')),
-          BottomNavigationBarItem(
-              // ignore: deprecated_member_use
-              icon: Icon(Icons.category),
-              title: Text('Categorias')),
-          BottomNavigationBarItem(
-              // ignore: deprecated_member_use
-              icon: Icon(Icons.list),
-              title: Text('Tus listas')),
-          BottomNavigationBarItem(
-              // ignore: deprecated_member_use
-              icon: BackButtonIcon(),
-              title: Text('Volver')),
-        ],
-      ),
+      bottomNavigationBar: BarraNavegacionInferior(),
+    );
+  }
+
+  BottomNavigationBar BarraNavegacionInferior() {
+    return BottomNavigationBar(
+      currentIndex: _currentIndex,
+      onTap: onTabTapped,
+      iconSize: 24,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.yellow[300],
+      fixedColor: Colors.black,
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          label: 'Explorar',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.category),
+          label: 'Categorias',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.list),
+          label: 'Tus listas',
+        ),
+        BottomNavigationBarItem(
+          icon: BackButtonIcon(),
+          label: 'Volver',
+        ),
+      ],
     );
   }
 
@@ -64,9 +68,11 @@ class NavigationBarImpl extends State<NavigationBar> {
     if (index == 3) {
       Navigator.of(context).pop();
     } else {
-      setState(() {
-        _currentIndex = index;
-      });
+      setState(
+        () {
+          _currentIndex = index;
+        },
+      );
     }
   }
 }

@@ -12,7 +12,7 @@ class PantallaExplorarImpl extends State<PantallaExplorarSonidos> {
     return MaterialApp(
       home: Scaffold(
         body: FutureBuilder(
-          future: FileUtils.getAudios(),
+          future: FileUtils.getAudiosByFileName(fileName: 'base'),
           builder: builderGridViewAudios,
         ),
       ),

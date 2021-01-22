@@ -43,7 +43,10 @@ class BotonCardImpl extends State<BotonCard> {
 
   List<Widget> get cardImpl {
     return <Widget>[
-      CardAudio(audioCache: audioCache, audio: audio),
+      CardAudio(
+        audioCache: audioCache,
+        audio: audio,
+      ),
       SizedBox(
         height: 8,
       ),
@@ -63,21 +66,21 @@ class BotonCardImpl extends State<BotonCard> {
 }
 
 class CardAudio extends StatelessWidget {
+  final AudioCache audioCache;
+  final String audio;
+
   const CardAudio({
     Key key,
     @required this.audioCache,
     @required this.audio,
   }) : super(key: key);
 
-  final AudioCache audioCache;
-  final String audio;
-
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
       child: Text('Click'),
       onPressed: () {
-        audioCache.play(audio + '.mp3');
+        audioCache.play('audios/$audio.mp3');
       },
     );
   }

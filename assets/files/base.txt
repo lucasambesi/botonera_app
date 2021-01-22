@@ -1,1 +1,5 @@
-Aver aver que paso;Amo su inocencia;Amo sus errores;A caso no lo viste venir;A eso se le llama estrategia;A perro traes el omnitrix;A veces cuando planeas una cosa;Ahora con que pendeja pendejada me vas a salir;Ahora sí viene lo chido;Auxilio me desmayo;Awantiaaaa;Ba dum tss;Bien pensado Woody;Bruhhh;C mamó;Caiste;Cállese y tome mi dinero;Es un papucho;Ese dia algo cambió dentro de lotso;No tienen el presentimiento de que algo muy malo va a pasar;Tú tas pendejo o que hijo
+Aver aver que paso,0,Amo su inocencia,0,Amo sus errores,0,
+A caso no lo viste venir,0,A eso se le llama estrategia,0,A perro traes el omnitrix,0,
+A veces cuando planeas una cosa,0,Ahora con que pendeja pendejada me vas a salir,0,Ahora sí viene lo chido,0,
+Auxilio me desmayo,0,Awantiaaaa,0,Ba dum tss,0,Bien pensado Woody,0,Bruhhh,0,C mamó,0,Caiste,0,Cállese y tome mi dinero,0,Es un papucho,0,
+Ese dia algo cambió dentro de lotso,0,No tienen el presentimiento de que algo muy malo va a pasar,0,Tú tas pendejo o que hijo,0

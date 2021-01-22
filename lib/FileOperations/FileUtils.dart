@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 import 'package:botonera_app/SoundsPage/ButtomCard.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:botonera_app/models/Audio.dart';
 
 class FileUtils {
   static Future<String> get getFilePath async {
@@ -49,7 +50,7 @@ class FileUtils {
         for (int i = 0; i < content.length; i++) {
           _widgets.add(
             BotonCard(
-              audio: content[i].toString(),
+              audio: new Audio(nombre: content[i].toString()),
             ),
           );
           i++;
@@ -65,12 +66,20 @@ class FileUtils {
 
     getListaAudiosByFileName(file).then(
       (content) {
-        for (int i = 0; i < content.length; i++)
+        for (int i = 0; i < content.length; i++) {
           _widgets.add(
             BotonCard(
-              audio: content[i].toString(),
+              audio: new Audio(
+                nombre: content[i].toString(),
+                fileContent: file,
+                favorito: bool.hasEnvironment(
+                  content[i].toString(),
+                ),
+              ),
             ),
           );
+          i++;
+        }
       },
     );
     return _widgets;
@@ -80,7 +89,7 @@ class FileUtils {
     String fileContents = await getFileDataAssets(file);
 
     List<String> audios = new List<String>();
-    audios = fileContents.split(";");
+    audios = fileContents.split(",");
 
     return audios;
   }

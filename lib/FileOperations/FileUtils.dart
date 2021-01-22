@@ -60,10 +60,10 @@ class FileUtils {
   }
 
   //#region Files en Assets
-  static Future<List<Widget>> getAudiosByFileName({String fileName}) async {
+  static Future<List<Widget>> getAudiosByFileName({String file}) async {
     List<Widget> _widgets = new List<Widget>();
 
-    getListaAudiosByFileName(fileName).then(
+    getListaAudiosByFileName(file).then(
       (content) {
         for (int i = 0; i < content.length; i++)
           _widgets.add(
@@ -76,18 +76,17 @@ class FileUtils {
     return _widgets;
   }
 
-  static Future<List<String>> getListaAudiosByFileName(String fileName) async {
-    String fileContents = await getFileDataAssets(fileName);
+  static Future<List<String>> getListaAudiosByFileName(String file) async {
+    String fileContents = await getFileDataAssets(file);
 
-    //fileContents.replaceAll("(\n|\r)", ",");
     List<String> audios = new List<String>();
-    audios = fileContents.split(",");
+    audios = fileContents.split(";");
 
     return audios;
   }
 
-  static Future<String> getFileDataAssets(String fileName) async {
-    return await rootBundle.loadString('assets/files/$fileName.txt');
+  static Future<String> getFileDataAssets(String file) async {
+    return await rootBundle.loadString('assets/files/$file.txt');
   }
   //#endregion
 }

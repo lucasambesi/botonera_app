@@ -12,7 +12,7 @@ class PantallaExplorarImpl extends State<PantallaExplorarSonidos> {
     return MaterialApp(
       home: Scaffold(
         body: FutureBuilder(
-          future: FileUtils.getAudiosByFileName(fileName: 'base'),
+          future: FileUtils.getAudiosByFileName(file: 'base'),
           builder: builderGridViewAudios,
         ),
       ),
@@ -32,7 +32,7 @@ class PantallaExplorarImpl extends State<PantallaExplorarSonidos> {
       );
     }
     return GridView.count(
-      crossAxisCount: (2),
+      crossAxisCount: (3),
       children: snapshot.data,
     );
   }

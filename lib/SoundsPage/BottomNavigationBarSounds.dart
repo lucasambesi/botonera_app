@@ -1,4 +1,5 @@
 import 'package:botonera_app/SoundsPage/ExploreSounds.dart';
+import 'package:botonera_app/SoundsPage/FavoriteSounds.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class BarraNavegacionImpl extends State<BarraNavegacion> {
     ),
     Container(
       child: Card(
-        child: Text('Tus listas'),
+        child: PantallaFavoritos(),
         color: Colors.blue,
       ),
     ),
@@ -31,11 +32,11 @@ class BarraNavegacionImpl extends State<BarraNavegacion> {
       body: Center(
         child: _children[_currentIndex],
       ),
-      bottomNavigationBar: BarraNavegacionInferior(),
+      bottomNavigationBar: barraNavegacionInferior(),
     );
   }
 
-  BottomNavigationBar BarraNavegacionInferior() {
+  BottomNavigationBar barraNavegacionInferior() {
     return BottomNavigationBar(
       currentIndex: _currentIndex,
       onTap: onTabTapped,
@@ -53,8 +54,8 @@ class BarraNavegacionImpl extends State<BarraNavegacion> {
           label: 'Categorias',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.list),
-          label: 'Tus listas',
+          icon: Icon(Icons.favorite),
+          label: 'Favoritos',
         ),
         BottomNavigationBarItem(
           icon: BackButtonIcon(),

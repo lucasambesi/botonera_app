@@ -1,4 +1,5 @@
 import 'package:botonera_app/models/Audio.dart';
+import 'package:botonera_app/SoundsPage/IconosInferiores.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
@@ -61,7 +62,9 @@ class BotonCardImpl extends State<BotonCard> {
       SizedBox(
         height: 8,
       ),
-      IconosInferiores(),
+      IconosInferiores(
+        audio: audio,
+      ),
     ];
   }
 }
@@ -83,36 +86,6 @@ class CardAudio extends StatelessWidget {
       onPressed: () {
         audioCache.play('audios/$audio.mp3');
       },
-    );
-  }
-}
-
-class IconosInferiores extends StatelessWidget {
-  const IconosInferiores({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.favorite),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {},
-          ),
-        ],
-      ),
     );
   }
 }

@@ -1,88 +1,19 @@
 import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:path_provider/path_provider.dart';
 import 'package:botonera_app/SoundsPage/ButtomCard.dart';
 import 'package:botonera_app/models/Audio.dart';
 
 class FileUtils {
-  static Future<String> get getFilePath async {
-    final directory = await getApplicationDocumentsDirectory();
-    return directory.path;
-  }
+  //#region Metodos principales
 
-  static Future<File> get getFile async {
-    final path = await getFilePath;
-    return File('$path/myFile.txt');
-  }
-
-  static Future<File> saveToFile(String data) async {
-    final file = await getFile;
-    return file.writeAsString(data);
-  }
-
-  static Future<String> readFromFile() async {
+  static Future<String> getFileDataAssets(String file) async {
     try {
-      final file = await getFile;
-      String fileContents = await file.readAsString();
-      return fileContents;
+      return await rootBundle.loadString('assets/files/$file.txt');
     } catch (e) {
-      return "";
+      return "Falla de lectura de archivo";
     }
-  }
-
-  static Future<List<String>> getListaAudios() async {
-    final file = await getFile;
-    String fileContents = await file.readAsString();
-
-    fileContents.replaceAll("\n", ",");
-    List<String> audios = new List<String>();
-    audios = fileContents.split(",");
-
-    return audios;
-  }
-
-  static Future<List<Widget>> getAudios() async {
-    List<Widget> _widgets = new List<Widget>();
-
-    getListaAudios().then(
-      (content) {
-        for (int i = 0; i < content.length; i++) {
-          _widgets.add(
-            BotonCard(
-              audio: new Audio(nombre: content[i].toString()),
-            ),
-          );
-          i++;
-        }
-      },
-    );
-    return _widgets;
-  }
-
-  //#region Files en Assets
-  static Future<List<Widget>> getAudiosByFileName({String file}) async {
-    List<Widget> _widgets = new List<Widget>();
-
-    getListaAudiosByFileName(file).then(
-      (content) {
-        for (int i = 0; i < content.length; i++) {
-          _widgets.add(
-            BotonCard(
-              audio: new Audio(
-                nombre: content[i].toString(),
-                fileContent: file,
-                favorito: bool.hasEnvironment(
-                  content[i].toString(),
-                ),
-              ),
-            ),
-          );
-          i++;
-        }
-      },
-    );
-    return _widgets;
   }
 
   static Future<List<String>> getListaAudiosByFileName(String file) async {
@@ -94,8 +25,81 @@ class FileUtils {
     return audios;
   }
 
-  static Future<String> getFileDataAssets(String file) async {
-    return await rootBundle.loadString('assets/files/$file.txt');
+  static Future<File> getFile(String file) async {
+    return File('assets/files/$file.txt');
   }
+
+  static Future<File> saveToFile(String fileName, String data) async {
+    final file = await getFile(fileName);
+    return file.writeAsString(data);
+  }
+
+  //#endregion
+
+  //#region Favoritos
+
+  static Future<List<Audio>> getAudiosFavoritos() async {
+    List<Audio> _audios = new List<Audio>();
+
+    getListaAudiosByFileName('favoritos').then(
+      (listaFavoritos) {
+        for (int i = 0; i < listaFavoritos.length; i++) {
+          _audios.add(
+            new Audio(
+              nombre: listaFavoritos[i].toString(),
+            ),
+          );
+        }
+      },
+    );
+    return _audios;
+  }
+
+  //#endregion
+
+  //#region Files en Assets
+
+  static Future<List<Widget>> getAudiosByFileName({String file}) async {
+    List<Widget> _widgets = new List<Widget>();
+    getListaAudiosByFileName('favoritos').then((listaFavoritos) {
+      getListaAudiosByFileName(file).then(
+        (listaFile) {
+          for (int i = 0; i < listaFile.length; i++) {
+            _widgets.add(
+              BotonCard(
+                audio: new Audio(
+                  nombre: listaFile[i].toString(),
+                  fileContent: file,
+                  favorito: _estaEnfavoritos(
+                      listaFavoritos.toList(), listaFile[i].toString()),
+                ),
+              ),
+            );
+          }
+        },
+      );
+    });
+
+    return _widgets;
+  }
+
+  //#endregion
+
+  //#region Metodos Auxiliares
+
+  static bool _estaEnfavoritos(List<String> listaFavoritos, String audio) {
+    Iterator iterator = listaFavoritos.iterator;
+    bool enFavoritos = false;
+
+    while (iterator.moveNext()) {
+      var iteratorItem = iterator.current;
+      if (iteratorItem == audio) {
+        enFavoritos = true;
+        break;
+      }
+    }
+    return enFavoritos;
+  }
+
   //#endregion
 }

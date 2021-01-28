@@ -17,9 +17,11 @@ class IconosInferioresImpl extends State<IconosInferiores> {
   IconosInferioresImpl({@required this.audio});
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
-    _favoritos = await FileUtils.getAudiosFavoritos();
+    FileUtils.getAudiosFavoritos().then((content) {
+      _favoritos = content;
+    });
     _color = (audio.favorito) ? Colors.red : Colors.black;
   }
 

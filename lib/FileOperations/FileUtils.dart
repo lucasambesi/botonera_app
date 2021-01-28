@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -23,15 +23,6 @@ class FileUtils {
     audios = fileContents.split(",");
 
     return audios;
-  }
-
-  static Future<File> getFile(String file) async {
-    return File('assets/files/$file.txt');
-  }
-
-  static Future<File> saveToFile(String fileName, String data) async {
-    final file = await getFile(fileName);
-    return file.writeAsString(data);
   }
 
   //#endregion

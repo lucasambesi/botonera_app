@@ -1,5 +1,5 @@
 import 'package:botonera_app/models/Audio.dart';
-import 'package:botonera_app/SoundsPage/IconosInferiores.dart';
+import 'package:botonera_app/Pages/SoundsPage/IconosInferiores.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';

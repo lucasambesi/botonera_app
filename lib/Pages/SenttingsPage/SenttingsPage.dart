@@ -12,7 +12,7 @@ class PantallaConfiguracionImpl extends State<PantallaConfiguracion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Prueba de ficheros'),
+        title: Text('Connfiguración'),
       ),
       body: Container(),
     );

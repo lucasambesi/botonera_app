@@ -2,7 +2,11 @@ class Audio {
   String _nombre, _fileContent;
   bool _favorito;
 
-  Audio({String nombre, String fileContent, bool favorito}) {
+  Audio({
+    String nombre,
+    String fileContent,
+    bool favorito,
+  }) {
     this._nombre = nombre;
     this._fileContent = fileContent;
     this._favorito = favorito;

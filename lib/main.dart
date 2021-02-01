@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:botonera_app/HomePage/HomePage.dart';
+import 'package:botonera_app/Pages/HomePage/HomePage.dart';
 import 'package:flutter/services.dart';
 
 void main() {

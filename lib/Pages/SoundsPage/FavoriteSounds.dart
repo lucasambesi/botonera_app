@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:botonera_app/FileOperations/FileUtils.dart';
 
 class PantallaFavoritos extends StatefulWidget {
   State<StatefulWidget> createState() => PantallaFavoritosImpl();

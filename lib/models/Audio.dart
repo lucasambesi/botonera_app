@@ -24,11 +24,13 @@ class Audio {
   Categoria get categoria => _categoria;
   bool get favorito => _favorito;
 
+  set favorito(bool favorito) => _favorito = favorito;
+
   Map<String, dynamic> toMap() {
     return {
       'id': _id,
       'nombre': _nombre,
-      'categoria': _categoria,
+      'categoria': _categoria.id,
       'favorito': _favorito,
     };
   }

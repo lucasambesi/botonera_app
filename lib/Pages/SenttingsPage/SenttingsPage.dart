@@ -1,3 +1,4 @@
+import 'package:botonera_app/db/AudioDAO.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,15 +7,14 @@ class PantallaConfiguracion extends StatefulWidget {
 }
 
 class PantallaConfiguracionImpl extends State<PantallaConfiguracion> {
-  String text = "";
-  final myController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Connfiguración'),
+    return MaterialApp(
+      home: Container(
+        child: Center(
+          child: Text('Proximamente'),
+        ),
       ),
-      body: Container(),
     );
   }
 }

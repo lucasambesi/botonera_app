@@ -1,6 +1,8 @@
+import 'package:botonera_app/Pages/SoundsPage/ButtomCard.dart';
+import 'package:botonera_app/db/AudioDAO.dart';
+import 'package:botonera_app/models/Audio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:botonera_app/FileOperations/FileUtils.dart';
 
 class PantallaExplorarSonidos extends StatefulWidget {
   State<StatefulWidget> createState() => PantallaExplorarImpl();
@@ -12,7 +14,7 @@ class PantallaExplorarImpl extends State<PantallaExplorarSonidos> {
     return MaterialApp(
       home: Scaffold(
         body: FutureBuilder(
-          future: FileUtils.getAudiosByFileName(file: 'base'),
+          future: getAudiosBotonCard(),
           builder: builderGridViewAudios,
         ),
       ),
@@ -35,5 +37,20 @@ class PantallaExplorarImpl extends State<PantallaExplorarSonidos> {
       crossAxisCount: (3),
       children: snapshot.data,
     );
+  }
+
+  static Future<List<Widget>> getAudiosBotonCard() async {
+    List<Widget> _widgets = new List<Widget>();
+    List<Audio> audios = await AudioDAO.getAudios();
+
+    for (int i = 0; i < audios.length; i++) {
+      _widgets.add(
+        BotonCard(
+          audio: audios[i],
+        ),
+      );
+    }
+
+    return _widgets;
   }
 }

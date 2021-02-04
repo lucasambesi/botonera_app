@@ -1,5 +1,5 @@
+import 'package:botonera_app/db/AudioDAO.dart';
 import 'package:botonera_app/models/Audio.dart';
-import 'package:botonera_app/FileOperations/FileUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,15 +13,11 @@ class IconosInferiores extends StatefulWidget {
 class IconosInferioresImpl extends State<IconosInferiores> {
   final Audio audio;
   Color _color;
-  List<Audio> _favoritos;
   IconosInferioresImpl({@required this.audio});
 
   @override
   void initState() {
     super.initState();
-    FileUtils.getAudiosFavoritos().then((content) {
-      _favoritos = content;
-    });
     _color = (audio.favorito) ? Colors.red : Colors.black;
   }
 
@@ -45,10 +41,12 @@ class IconosInferioresImpl extends State<IconosInferiores> {
                 () {
                   if (_color == Colors.black) {
                     _color = Colors.red;
-                    _favoritos.add(audio);
+                    audio.favorito = true;
+                    AudioDAO.updateAudio(audio);
                   } else {
                     _color = Colors.black;
-                    eliminarDeFavoritos();
+                    audio.favorito = false;
+                    AudioDAO.updateAudio(audio);
                   }
                 },
               );
@@ -61,17 +59,5 @@ class IconosInferioresImpl extends State<IconosInferiores> {
         ],
       ),
     );
-  }
-
-  void eliminarDeFavoritos() {
-    Iterator iterator = _favoritos.iterator;
-
-    while (iterator.moveNext()) {
-      Audio iteratorItem = iterator.current;
-      if (iteratorItem.nombre == audio.nombre) {
-        _favoritos.remove(iteratorItem);
-        break;
-      }
-    }
   }
 }

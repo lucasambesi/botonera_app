@@ -87,6 +87,7 @@ class AudioDAO {
     return Audio(
       id: audioMap['id'],
       nombre: audioMap['nombre'],
+      imagen: audioMap['imagen'],
       favorito: audioMap['favorito'] == 1 ? true : false,
       categoria:
           await CategoriaDAO.getCategoriaById(audioMap['categoria'], false),

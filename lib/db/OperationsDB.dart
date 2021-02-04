@@ -6,16 +6,20 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
-//region Datos
+//#region Constantes
+const database = 'test4.db';
+//#endregion
+
+//#region Datos
 var data = [
   {
     "nombre": "base",
     "imagen": "",
     "audios": [
-      {"nombre": "Aver aver que paso", "favorito": false},
-      {"nombre": "Amo su inocencia", "favorito": false},
-      {"nombre": "Amo sus errores", "favorito": false},
-      {"nombre": "A caso no lo viste venir", "favorito": false}
+      {"nombre": "Aver aver que paso", "favorito": false, "imagen": ""},
+      {"nombre": "Amo su inocencia", "favorito": false, "imagen": ""},
+      {"nombre": "Amo sus errores", "favorito": false, "imagen": ""},
+      {"nombre": "A caso no lo viste venir", "favorito": false, "imagen": ""}
     ]
   }
 ];
@@ -27,7 +31,7 @@ class OperationsDB {
       Database db = await openDatabase(
         join(
           await getDatabasesPath(),
-          'test3.db',
+          database,
         ),
         onCreate: (db, version) {
           var qry;
@@ -46,6 +50,7 @@ class OperationsDB {
               "id INTEGER PRIMARY KEY AUTOINCREMENT,"
               "nombre TEXT,"
               "favorito BIT,"
+              "imagen TEXT,"
               "categoria INTEGER NOT NULL,"
               "FOREIGN KEY(categoria) REFERENCES Categoria(id)"
               ")";
@@ -68,11 +73,12 @@ class OperationsDB {
                 Audio audio = new Audio(
                   nombre: audios[c]["nombre"],
                   favorito: audios[c]["favorito"],
+                  imagen: audios[c]["imagen"],
                   categoria: categoria,
                 );
 
                 var qryAudio =
-                    'INSERT INTO Audio(nombre,favorito,categoria) VALUES("${audio.nombre}",${audio.favorito ? 1 : 0},${categoria.id})';
+                    'INSERT INTO Audio(nombre,favorito,imagen,categoria) VALUES("${audio.nombre}",${audio.favorito ? 1 : 0},"${audio.imagen}",${categoria.id})';
                 db.rawInsert(qryAudio);
               }
             } catch (e) {
@@ -95,7 +101,7 @@ class OperationsDB {
 
   deleteDB() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, 'cart.db');
+    String path = join(documentsDirectory.path, database);
 
     await deleteDatabase(path);
   }

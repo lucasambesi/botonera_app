@@ -1,5 +1,5 @@
-import 'package:botonera_app/Pages/SoundsPage/ExploreSounds.dart';
-import 'package:botonera_app/Pages/SoundsPage/FavoriteSounds.dart';
+import 'package:botonera_app/Pages/SoundsPage/ExploreSoundsPage.dart';
+import 'package:botonera_app/Pages/SoundsPage/FavoriteSoundsPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -70,6 +70,15 @@ class AudioDAO {
 
     return AudioDAO._toAudioList(list);
   }
+
+  static Future<List<Audio>> getAudiosFavoritos() async {
+    Database database = await OperationsDB.openDB();
+
+    List<Map> list =
+        await database.rawQuery('SELECT * FROM Audio WHERE favorito = 1');
+
+    return AudioDAO._toAudioList(list);
+  }
   //#endregion
 
   //#region Conversores

@@ -2,6 +2,8 @@ import 'package:botonera_app/db/AudioDAO.dart';
 import 'package:botonera_app/models/Audio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:flutter/services.dart';
 
 class IconosInferiores extends StatefulWidget {
   final Audio audio;
@@ -25,39 +27,116 @@ class IconosInferioresImpl extends State<IconosInferiores> {
   Widget build(BuildContext context) {
     return Center(
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.favorite),
-            tooltip: 'Agregar a Favoritos',
-            color: _color,
-            onPressed: () {
-              setState(
-                () {
-                  if (_color == Colors.black) {
-                    _color = Colors.red;
-                    audio.favorito = true;
-                    AudioDAO.updateAudio(audio);
-                  } else {
-                    _color = Colors.black;
-                    audio.favorito = false;
-                    AudioDAO.updateAudio(audio);
-                  }
-                },
-              );
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {},
-          ),
+          iconoInformacion(context),
+          iconoFavorito(),
+          iconoCompartir(),
         ],
       ),
+    );
+  }
+
+  IconButton iconoInformacion(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.info_outline),
+      tooltip: 'Información',
+      onPressed: () {
+        showDialog(
+          barrierDismissible: true,
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(
+              'Información del audio',
+              textAlign: TextAlign.center,
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Space(),
+                Text(
+                  'Categoría: "' + audio.categoria.nombre + '."',
+                  textAlign: TextAlign.left,
+                ),
+                Space(),
+                Text(
+                  'Nombre: "' + audio.nombre + '."',
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text(
+                  'Cerrar',
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        ).then(
+          (content) {
+            if (content.toString().isNotEmpty) setState(() {});
+          },
+        );
+      },
+    );
+  }
+
+  IconButton iconoFavorito() {
+    return IconButton(
+      icon: Icon(Icons.favorite),
+      tooltip: 'Agregar a Favoritos',
+      color: _color,
+      onPressed: () {
+        setState(
+          () {
+            if (_color == Colors.black) {
+              _color = Colors.red;
+              audio.favorito = true;
+              AudioDAO.updateAudio(audio);
+            } else {
+              _color = Colors.black;
+              audio.favorito = false;
+              AudioDAO.updateAudio(audio);
+            }
+          },
+        );
+      },
+    );
+  }
+
+  IconButton iconoCompartir() {
+    return IconButton(
+      icon: Icon(Icons.share),
+      tooltip: 'Compartir',
+      onPressed: () async {
+        String nombreAudio = audio.nombre;
+        // final ByteData bytes =
+        //     await rootBundle.load('assets/audios/$nombreAudio.mp3');
+
+        final ByteData bytes =
+            await rootBundle.load('assets/images/logo_home.jpg');
+        Share.file(
+            nombreAudio, nombreAudio, bytes.buffer.asInt8List(), 'image/jpg');
+      },
+    );
+  }
+}
+
+class Space extends StatelessWidget {
+  const Space({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 8,
     );
   }
 }

@@ -1,33 +1,41 @@
 import 'package:botonera_app/Pages/SoundsPage/ButtomCard.dart';
-import 'package:botonera_app/db/AudioDAO.dart';
 import 'package:botonera_app/models/Audio.dart';
+import 'package:botonera_app/models/Categoria.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FutureBuilderCards extends StatefulWidget {
   final Function callback;
-  FutureBuilderCards({@required this.callback});
+  final Categoria categoria;
+  FutureBuilderCards({@required this.callback, this.categoria});
 
   State<StatefulWidget> createState() =>
-      FutureBuilderCardsImpl(callback: callback);
+      FutureBuilderCardsImpl(callback: callback, categoria: categoria);
 }
 
 class FutureBuilderCardsImpl extends State<FutureBuilderCards> {
   Function callback;
+  final Categoria categoria;
 
-  FutureBuilderCardsImpl({@required this.callback});
+  FutureBuilderCardsImpl({@required this.callback, this.categoria});
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getAudiosBotonCard(callback: callback),
+      future: getAudiosBotonCard(callback: callback, categoria: categoria),
       builder: builderGridViewAudios,
     );
   }
 
-  static Future<List<Widget>> getAudiosBotonCard({@required callback}) async {
+  static Future<List<Widget>> getAudiosBotonCard(
+      {@required callback, Categoria categoria}) async {
     List<Widget> _widgets = new List<Widget>();
-    List<Audio> audios = await callback();
+    List<Audio> audios;
+
+    if (categoria != null)
+      audios = await callback(categoria);
+    else
+      audios = await callback();
 
     for (int i = 0; i < audios.length; i++) {
       _widgets.add(

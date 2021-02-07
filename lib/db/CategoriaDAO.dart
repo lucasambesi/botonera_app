@@ -3,6 +3,7 @@ import 'package:botonera_app/db/AudioDAO.dart';
 import 'package:botonera_app/db/OperationsDB.dart';
 import 'package:botonera_app/models/Audio.dart';
 import 'package:botonera_app/models/Categoria.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 
 class CategoriaDAO {
@@ -36,7 +37,8 @@ class CategoriaDAO {
   //endregion
 
   //#region Consultas
-  static Future<List<Categoria>> getCategoria(bool conAudios) async {
+  static Future<List<Categoria>> getCategorias(
+      {@required bool conAudios}) async {
     Database database = await OperationsDB.openDB();
     final List<Map<String, dynamic>> categoriasMap =
         await database.query('Categoria');

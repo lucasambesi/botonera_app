@@ -1,3 +1,4 @@
+import 'package:botonera_app/Pages/SoundsPage/CategoriasPage/CategoriesSoundsPage.dart';
 import 'package:botonera_app/Pages/SoundsPage/ExploreSoundsPage.dart';
 import 'package:botonera_app/Pages/SoundsPage/FavoriteSoundsPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,18 +13,8 @@ class BarraNavegacionImpl extends State<BarraNavegacion> {
 
   final List<Widget> _children = [
     PantallaExplorarSonidos(),
-    Container(
-      child: Card(
-        child: Text('Categorias'),
-        color: Colors.green,
-      ),
-    ),
-    Container(
-      child: Card(
-        child: PantallaFavoritos(),
-        color: Colors.blue,
-      ),
-    ),
+    PantallaCategorias(),
+    PantallaFavoritos(),
   ];
 
   @override

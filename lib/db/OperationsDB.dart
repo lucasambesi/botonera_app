@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:botonera_app/Helpers/Data.dart';
 import 'package:botonera_app/models/Audio.dart';
 import 'package:botonera_app/models/Categoria.dart';
 import 'package:path/path.dart';
@@ -11,18 +12,7 @@ const database = 'test4.db';
 //#endregion
 
 //#region Datos
-var data = [
-  {
-    "nombre": "base",
-    "imagen": "",
-    "audios": [
-      {"nombre": "Aver aver que paso", "favorito": false, "imagen": ""},
-      {"nombre": "Amo su inocencia", "favorito": false, "imagen": ""},
-      {"nombre": "Amo sus errores", "favorito": false, "imagen": ""},
-      {"nombre": "A caso no lo viste venir", "favorito": false, "imagen": ""}
-    ]
-  }
-];
+var data = DataDB.getData();
 //#endregion
 
 class OperationsDB {

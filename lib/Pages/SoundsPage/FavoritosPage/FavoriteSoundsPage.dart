@@ -12,8 +12,16 @@ class PantallaFavoritosImpl extends State<PantallaFavoritos> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: FutureBuilderCards(
-          callback: AudioDAO.getAudiosFavoritos,
+        appBar: AppBar(
+          title: Text('Favoritos'),
+          backgroundColor: Colors.yellow[300],
+          shadowColor: Colors.white,
+        ),
+        body: Padding(
+          child: FutureBuilderCards(
+            callback: AudioDAO.getAudiosFavoritos,
+          ),
+          padding: EdgeInsets.only(top: 8.0),
         ),
       ),
     );

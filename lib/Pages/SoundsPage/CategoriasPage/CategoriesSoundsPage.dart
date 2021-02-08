@@ -16,7 +16,10 @@ class PantallaCategoriasImpl extends State<PantallaCategorias> {
           backgroundColor: Colors.yellow[300],
           shadowColor: Colors.white,
         ),
-        body: FBCategoriaCards(),
+        body: Padding(
+          child: FBCategoriaCards(),
+          padding: EdgeInsets.only(top: 8.0),
+        ),
       ),
     );
   }

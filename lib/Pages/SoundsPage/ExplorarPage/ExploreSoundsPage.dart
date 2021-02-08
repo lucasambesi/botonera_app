@@ -12,8 +12,16 @@ class PantallaExplorarImpl extends State<PantallaExplorarSonidos> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: FutureBuilderCards(
-          callback: AudioDAO.getAudios,
+        appBar: AppBar(
+          title: Text('Explorar'),
+          backgroundColor: Colors.yellow[300],
+          shadowColor: Colors.white,
+        ),
+        body: Padding(
+          child: FutureBuilderCards(
+            callback: AudioDAO.getAudios,
+          ),
+          padding: EdgeInsets.only(top: 8.0),
         ),
       ),
     );

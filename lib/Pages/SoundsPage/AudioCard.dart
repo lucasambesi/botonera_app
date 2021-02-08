@@ -5,26 +5,26 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-class BotonCard extends StatefulWidget {
+class AudioCard extends StatefulWidget {
   final Audio audio;
-  BotonCard({@required this.audio});
+  AudioCard({@required this.audio});
 
-  State<StatefulWidget> createState() => BotonCardImpl(audio: audio);
+  State<StatefulWidget> createState() => AudioCardImpl(audio: audio);
 }
 
-class BotonCardImpl extends State<BotonCard> {
+class AudioCardImpl extends State<AudioCard> {
   final Audio audio;
   AudioPlayer audioPlayer;
   AudioCache audioCache;
-
-  BotonCardImpl({@required this.audio});
+  AudioCardImpl({@required this.audio});
 
   @override
   void initState() {
     super.initState();
 
     audioPlayer = AudioPlayer();
-    audioCache = AudioCache(fixedPlayer: audioPlayer);
+    audioCache = AudioCache(
+        fixedPlayer: audioPlayer, prefix: 'audios/${audio.categoria.nombre}/');
   }
 
   @override
@@ -45,9 +45,10 @@ class BotonCardImpl extends State<BotonCard> {
 
   List<Widget> get cardImpl {
     return <Widget>[
-      CardAudio(
+      BotonAudio(
         audioCache: audioCache,
         nombreAudio: audio.nombre,
+        nombreCategoria: audio.categoria.nombre,
       ),
       SizedBox(
         height: 8,
@@ -69,14 +70,16 @@ class BotonCardImpl extends State<BotonCard> {
   }
 }
 
-class CardAudio extends StatelessWidget {
+class BotonAudio extends StatelessWidget {
   final AudioCache audioCache;
   final String nombreAudio;
+  final String nombreCategoria;
 
-  const CardAudio({
+  const BotonAudio({
     Key key,
     @required this.audioCache,
     @required this.nombreAudio,
+    @required this.nombreCategoria,
   }) : super(key: key);
 
   @override
@@ -84,7 +87,7 @@ class CardAudio extends StatelessWidget {
     return RaisedButton(
       child: Text('Click'),
       onPressed: () {
-        audioCache.play('audios/$nombreAudio.mp3');
+        audioCache.play('$nombreAudio.mp3');
       },
     );
   }

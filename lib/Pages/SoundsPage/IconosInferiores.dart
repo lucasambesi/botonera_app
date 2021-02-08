@@ -55,12 +55,16 @@ class IconosInferioresImpl extends State<IconosInferiores> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Space(),
+                SizedBox(
+                  height: 8,
+                ),
                 Text(
                   'Categoría: "' + audio.categoria.nombre + '."',
                   textAlign: TextAlign.left,
                 ),
-                Space(),
+                SizedBox(
+                  height: 8,
+                ),
                 Text(
                   'Nombre: "' + audio.nombre + '."',
                   textAlign: TextAlign.left,
@@ -124,19 +128,6 @@ class IconosInferioresImpl extends State<IconosInferiores> {
         Share.file(
             nombreAudio, nombreAudio, bytes.buffer.asInt8List(), 'image/jpg');
       },
-    );
-  }
-}
-
-class Space extends StatelessWidget {
-  const Space({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 8,
     );
   }
 }

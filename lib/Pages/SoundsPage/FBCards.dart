@@ -61,7 +61,7 @@ class FutureBuilderCardsImpl extends State<FutureBuilderCards> {
       );
     }
     return GridView.count(
-      crossAxisCount: (3),
+      crossAxisCount: (2),
       children: snapshot.data,
     );
   }

@@ -20,7 +20,7 @@ class IconosInferioresImpl extends State<IconosInferiores> {
   @override
   void initState() {
     super.initState();
-    _color = (audio.favorito) ? Colors.red : Colors.black;
+    _color = (audio.favorito) ? Colors.yellow : Colors.black;
   }
 
   @override
@@ -54,21 +54,37 @@ class IconosInferioresImpl extends State<IconosInferiores> {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 8,
+                  height: 12,
                 ),
                 Text(
-                  'Categoría: "' + audio.categoria.nombre + '."',
+                  'Nombre:  "' + audio.nombre + '".',
                   textAlign: TextAlign.left,
                 ),
                 SizedBox(
-                  height: 8,
+                  height: 12,
                 ),
                 Text(
-                  'Nombre: "' + audio.nombre + '."',
+                  'Categoría:  "' + audio.categoria.nombre + '".',
                   textAlign: TextAlign.left,
                 ),
+                SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'En Favoritos: ',
+                      textAlign: TextAlign.left,
+                    ),
+                    Icon(
+                      (audio.favorito ? Icons.check : Icons.close),
+                      color: (audio.favorito ? Colors.green : Colors.red),
+                    ),
+                  ],
+                )
               ],
             ),
             actions: <Widget>[
@@ -93,14 +109,14 @@ class IconosInferioresImpl extends State<IconosInferiores> {
 
   IconButton iconoFavorito() {
     return IconButton(
-      icon: Icon(Icons.favorite),
+      icon: Icon(Icons.star),
       tooltip: 'Agregar a Favoritos',
       color: _color,
       onPressed: () {
         setState(
           () {
             if (_color == Colors.black) {
-              _color = Colors.red;
+              _color = Colors.yellow;
               audio.favorito = true;
               AudioDAO.updateAudio(audio);
             } else {

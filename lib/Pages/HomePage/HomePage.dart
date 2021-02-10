@@ -28,10 +28,7 @@ class PantallaPrincipal extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/home_FondoBlanco.jpg"),
-            fit: BoxFit.cover,
-          ),
+          color: Colors.white,
         ),
         child: MenuPrincipal(),
       ),

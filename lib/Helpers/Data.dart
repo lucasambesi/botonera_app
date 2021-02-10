@@ -1,6 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 class DataDB {
   static getData() {
     var data = [
@@ -57,7 +54,6 @@ class DataDB {
             "favorito": false,
             "imagen": ""
           },
-          {"nombre": "", "favorito": false, "imagen": ""},
           {
             "nombre":
                 "No tienen el presentimiento de que algo muy malo va a pasar",

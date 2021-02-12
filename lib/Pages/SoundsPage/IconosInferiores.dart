@@ -15,11 +15,13 @@ class IconosInferiores extends StatefulWidget {
 class IconosInferioresImpl extends State<IconosInferiores> {
   final Audio audio;
   Color _color;
+  double sizeIcons;
   IconosInferioresImpl({@required this.audio});
 
   @override
   void initState() {
     super.initState();
+    sizeIcons = 25;
     _color = (audio.favorito) ? Colors.yellow : Colors.black;
   }
 
@@ -40,7 +42,10 @@ class IconosInferioresImpl extends State<IconosInferiores> {
 
   IconButton iconoInformacion(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.info_outline),
+      icon: Icon(
+        Icons.info_outline,
+        size: sizeIcons,
+      ),
       tooltip: 'Información',
       onPressed: () {
         showDialog(
@@ -109,7 +114,10 @@ class IconosInferioresImpl extends State<IconosInferiores> {
 
   IconButton iconoFavorito() {
     return IconButton(
-      icon: Icon(Icons.star),
+      icon: Icon(
+        Icons.star,
+        size: sizeIcons,
+      ),
       tooltip: 'Agregar a Favoritos',
       color: _color,
       onPressed: () {
@@ -132,7 +140,10 @@ class IconosInferioresImpl extends State<IconosInferiores> {
 
   IconButton iconoCompartir() {
     return IconButton(
-      icon: Icon(Icons.share),
+      icon: Icon(
+        Icons.share,
+        size: sizeIcons,
+      ),
       tooltip: 'Compartir',
       onPressed: () async {
         String nombreAudio = audio.nombre;

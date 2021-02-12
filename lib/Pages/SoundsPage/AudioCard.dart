@@ -33,7 +33,7 @@ class AudioCardImpl extends State<AudioCard> {
         padding: const EdgeInsets.all(8.0),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: cardImpl,
           ),
@@ -44,47 +44,110 @@ class AudioCardImpl extends State<AudioCard> {
 
   List<Widget> get cardImpl {
     return <Widget>[
-      BotonAudio(
-        audioCache: audioCache,
-        nombreAudio: audio.nombre,
+      Flexible(
+        flex: 3,
+        fit: FlexFit.tight,
+        child: Text(
+          (audio.nombre.length <= 27) ? audio.nombre : cortarAudioNombre(),
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 15),
+        ),
       ),
-      SizedBox(
-        height: 8,
+      Flexible(
+        flex: 4,
+        fit: FlexFit.loose,
+        child: BotonAudio(
+          audioCache: audioCache,
+          nombreAudio: audio.nombre,
+          tipoReproducir: true,
+        ),
       ),
-      SizedBox(
-        height: 8,
-      ),
-      Text(
-        audio.nombre,
-        textAlign: TextAlign.center,
-      ),
-      SizedBox(
-        height: 8,
-      ),
-      IconosInferiores(
-        audio: audio,
+      Flexible(
+        flex: 5,
+        fit: FlexFit.tight,
+        child: IconosInferiores(
+          audio: audio,
+        ),
       ),
     ];
   }
+
+  String cortarAudioNombre() {
+    List<String> cadena = audio.nombre.split(' ');
+    String cadena2 = '';
+    for (int i = 0; i <= 4; i++) {
+      cadena2 += cadena[i] + ' ';
+    }
+    cadena2 += '...';
+    return cadena2;
+  }
 }
 
-class BotonAudio extends StatelessWidget {
+class BotonAudio extends StatefulWidget {
   final AudioCache audioCache;
   final String nombreAudio;
+  final bool tipoReproducir;
 
-  const BotonAudio({
-    Key key,
+  State<StatefulWidget> createState() => BotonAudioImpl(
+        audioCache: audioCache,
+        nombreAudio: nombreAudio,
+        tipoReproducir: tipoReproducir,
+      );
+
+  BotonAudio({
     @required this.audioCache,
     @required this.nombreAudio,
-  }) : super(key: key);
+    @required this.tipoReproducir,
+  });
+}
+
+class BotonAudioImpl extends State<BotonAudio> {
+  final AudioCache audioCache;
+  final String nombreAudio;
+  bool tipoReproducir;
+
+  BotonAudioImpl({
+    @required this.audioCache,
+    @required this.nombreAudio,
+    @required this.tipoReproducir,
+  });
+
+  @override
+  void initState() {
+    super.initState();
+
+    audioCache.fixedPlayer.completionHandler = () {
+      setState(
+        () {
+          tipoReproducir = true;
+        },
+      );
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      child: Text('Click'),
+    return RawMaterialButton(
       onPressed: () {
-        audioCache.play('audios/$nombreAudio.mp3');
+        if (tipoReproducir)
+          audioCache.play('audios/$nombreAudio.mp3');
+        else
+          audioCache.fixedPlayer.stop();
+        setState(
+          () {
+            tipoReproducir = !tipoReproducir;
+          },
+        );
       },
+      child: Icon(
+        (tipoReproducir) ? Icons.play_arrow : Icons.stop,
+        color: Colors.white,
+        size: 30,
+      ),
+      shape: CircleBorder(),
+      elevation: 2.0,
+      fillColor: Colors.yellow[300],
+      padding: const EdgeInsets.all(15.0),
     );
   }
 }

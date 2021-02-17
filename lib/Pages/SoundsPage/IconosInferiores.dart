@@ -21,22 +21,20 @@ class IconosInferioresImpl extends State<IconosInferiores> {
   @override
   void initState() {
     super.initState();
-    sizeIcons = 25;
+    sizeIcons = 27;
     _color = (audio.favorito) ? Colors.yellow : Colors.black;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          iconoInformacion(context),
-          iconoFavorito(),
-          iconoCompartir(),
-        ],
-      ),
+    return ButtonBar(
+      alignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        iconoInformacion(context),
+        iconoFavorito(),
+        iconoCompartir(),
+      ],
     );
   }
 

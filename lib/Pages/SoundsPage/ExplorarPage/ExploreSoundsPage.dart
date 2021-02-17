@@ -20,6 +20,7 @@ class PantallaExplorarImpl extends State<PantallaExplorarSonidos> {
         body: Padding(
           child: FutureBuilderCards(
             callback: AudioDAO.getAudios,
+            desordenar: true,
           ),
           padding: EdgeInsets.only(top: 8.0),
         ),

@@ -30,6 +30,7 @@ class CategoriaAudiosPageImpl extends State<CategoriaAudiosPage> {
       body: FutureBuilderCards(
         callback: AudioDAO.getAudiosByCategoria,
         categoria: categoria,
+        desordenar: true,
       ),
     );
   }

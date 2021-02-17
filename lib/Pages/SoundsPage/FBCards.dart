@@ -7,17 +7,22 @@ import 'package:flutter/material.dart';
 class FutureBuilderCards extends StatefulWidget {
   final Function callback;
   final Categoria categoria;
-  FutureBuilderCards({@required this.callback, this.categoria});
+  final bool desordenar;
 
-  State<StatefulWidget> createState() =>
-      FutureBuilderCardsImpl(callback: callback, categoria: categoria);
+  FutureBuilderCards(
+      {@required this.callback, this.categoria, this.desordenar = false});
+
+  State<StatefulWidget> createState() => FutureBuilderCardsImpl(
+      callback: callback, categoria: categoria, desordenar: desordenar);
 }
 
 class FutureBuilderCardsImpl extends State<FutureBuilderCards> {
   Function callback;
   final Categoria categoria;
+  final bool desordenar;
 
-  FutureBuilderCardsImpl({@required this.callback, this.categoria});
+  FutureBuilderCardsImpl(
+      {@required this.callback, this.categoria, this.desordenar});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class FutureBuilderCardsImpl extends State<FutureBuilderCards> {
     );
   }
 
-  static Future<List<Widget>> getAudiosBotonCard(
+  Future<List<Widget>> getAudiosBotonCard(
       {@required callback, Categoria categoria}) async {
     List<Widget> _widgets = new List<Widget>();
     List<Audio> audios;
@@ -44,6 +49,8 @@ class FutureBuilderCardsImpl extends State<FutureBuilderCards> {
         ),
       );
     }
+
+    if (desordenar) _widgets.shuffle();
 
     return _widgets;
   }

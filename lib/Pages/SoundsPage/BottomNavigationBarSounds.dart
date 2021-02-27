@@ -45,7 +45,7 @@ class BarraNavegacionImpl extends State<BarraNavegacion> {
           label: 'Categorias',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
+          icon: Icon(Icons.star),
           label: 'Favoritos',
         ),
         BottomNavigationBarItem(

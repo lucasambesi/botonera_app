@@ -16,6 +16,7 @@ dependencies:
   sqflite:
   esys_flutter_share: ^1.0.1
   flutter_colorpicker: ^0.3.5
+  color_parser: ^0.0.2
 
 dev_dependencies:
   flutter_test:

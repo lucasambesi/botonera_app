@@ -1,12 +1,12 @@
 import 'dart:io' show Platform, exit;
 import 'package:botonera_app/db/ParametroDAO.dart';
-import 'package:botonera_app/models/Parametro.dart';
 import 'package:color_parser/color_parser.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:botonera_app/Pages/SoundsPage/BottomNavigationBarSounds.dart';
 import 'package:botonera_app/Pages/SenttingsPage/SenttingsPage.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -33,7 +33,7 @@ class PantallaPrincipal extends StatefulWidget {
 }
 
 class PantallaPrincipalImpl extends State<PantallaPrincipal> {
-  Parametro colorFondo;
+  Color colorFondo;
 
   @override
   void initState() {
@@ -44,7 +44,7 @@ class PantallaPrincipalImpl extends State<PantallaPrincipal> {
   Future<void> setColor() async {
     ParametroDAO.getParametro("colorFondo").then((content) {
       setState(() {
-        colorFondo = content;
+        colorFondo = ColorParser.hex(content.valor).getColor();
       });
     });
   }
@@ -54,7 +54,7 @@ class PantallaPrincipalImpl extends State<PantallaPrincipal> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: ColorParser.hex(colorFondo.valor).getColor(),
+          color: colorFondo,
         ),
         child: MenuPrincipal(),
       ),
@@ -99,10 +99,29 @@ class FlexibleLogoHome extends StatelessWidget {
   }
 }
 
-class FlexibleSonidos extends StatelessWidget {
-  const FlexibleSonidos({
-    Key key,
-  }) : super(key: key);
+class FlexibleSonidos extends StatefulWidget {
+  FlexibleSonidos({Key key}) : super(key: key);
+
+  @override
+  FlexibleSonidosImpl createState() => FlexibleSonidosImpl();
+}
+
+class FlexibleSonidosImpl extends State<FlexibleSonidos> {
+  Color colorBoton;
+
+  @override
+  void initState() {
+    super.initState();
+    setColor();
+  }
+
+  Future<void> setColor() async {
+    ParametroDAO.getParametro("colorBotonSonidos").then((content) {
+      setState(() {
+        colorBoton = ColorParser.hex(content.valor).getColor();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +132,10 @@ class FlexibleSonidos extends StatelessWidget {
         height: 35,
         child: RaisedButton(
           child: Text('Sonidos'),
-          color: Colors.yellow,
+          color: colorBoton,
+          textColor: useWhiteForeground(colorBoton)
+              ? const Color(0xffffffff)
+              : const Color(0xff000000),
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
@@ -127,10 +149,29 @@ class FlexibleSonidos extends StatelessWidget {
   }
 }
 
-class FlexibleConfiguracion extends StatelessWidget {
-  const FlexibleConfiguracion({
-    Key key,
-  }) : super(key: key);
+class FlexibleConfiguracion extends StatefulWidget {
+  FlexibleConfiguracion({Key key}) : super(key: key);
+
+  @override
+  FlexibleConfiguracionImpl createState() => FlexibleConfiguracionImpl();
+}
+
+class FlexibleConfiguracionImpl extends State<FlexibleConfiguracion> {
+  Color colorBoton;
+
+  @override
+  void initState() {
+    super.initState();
+    setColor();
+  }
+
+  Future<void> setColor() async {
+    ParametroDAO.getParametro("colorBotonConfig").then((content) {
+      setState(() {
+        colorBoton = ColorParser.hex(content.valor).getColor();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +182,10 @@ class FlexibleConfiguracion extends StatelessWidget {
         height: 35,
         child: RaisedButton(
           child: Text('Configuración'),
-          color: Colors.yellow,
+          color: colorBoton,
+          textColor: useWhiteForeground(colorBoton)
+              ? const Color(0xffffffff)
+              : const Color(0xff000000),
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
@@ -155,10 +199,29 @@ class FlexibleConfiguracion extends StatelessWidget {
   }
 }
 
-class FlexibleSalir extends StatelessWidget {
-  const FlexibleSalir({
-    Key key,
-  }) : super(key: key);
+class FlexibleSalir extends StatefulWidget {
+  FlexibleSalir({Key key}) : super(key: key);
+
+  @override
+  FlexibleSalirImpl createState() => FlexibleSalirImpl();
+}
+
+class FlexibleSalirImpl extends State<FlexibleSalir> {
+  Color colorBoton;
+
+  @override
+  void initState() {
+    super.initState();
+    setColor();
+  }
+
+  Future<void> setColor() async {
+    ParametroDAO.getParametro("colorBotonSalir").then((content) {
+      setState(() {
+        colorBoton = ColorParser.hex(content.valor).getColor();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +232,10 @@ class FlexibleSalir extends StatelessWidget {
         height: 35,
         child: RaisedButton(
           child: Text('Salir'),
-          color: Colors.yellow,
+          color: colorBoton,
+          textColor: useWhiteForeground(colorBoton)
+              ? const Color(0xffffffff)
+              : const Color(0xff000000),
           onPressed: () {
             if (Platform.isAndroid) {
               SystemNavigator.pop();

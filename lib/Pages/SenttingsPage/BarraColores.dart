@@ -1,5 +1,6 @@
 import 'package:botonera_app/db/ParametroDAO.dart';
 import 'package:botonera_app/models/Parametro.dart';
+import 'package:botonera_app/models/SelectedWidget.dart';
 import 'package:color_parser/color_parser.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,28 +12,8 @@ class BarraColores extends StatefulWidget {
       BarraColoresImpl(nombreParametro: nombreParametro);
 }
 
-class SelectWidget {
-  bool _isSelected;
-  Color _color;
-
-  SelectWidget({
-    @required bool isSelected,
-    @required Color color,
-  }) {
-    this._isSelected = isSelected;
-    this._color = color;
-  }
-
-  bool get isSelected => _isSelected;
-  Color get color => _color;
-
-  void setSelected(bool valor) {
-    this._isSelected = valor;
-  }
-}
-
 class BarraColoresImpl extends State<BarraColores> {
-  List<SelectWidget> isSelected;
+  List<SelectedWidget> isSelected;
   List<Parametro> parametros;
   Parametro colorFondo;
   final String nombreParametro;
@@ -42,14 +23,6 @@ class BarraColoresImpl extends State<BarraColores> {
     super.initState();
     setColor();
   }
-
-  // Future<void> setColor() async {
-  //   ParametroDAO.getParametros().then((content) {
-  //     setState(() {
-  //       parametros = content;
-  //     });
-  //   });
-  // }
 
   Future<void> setColor() async {
     List<Parametro> params = await ParametroDAO.getParametros();
@@ -66,26 +39,28 @@ class BarraColoresImpl extends State<BarraColores> {
     setState(
       () {
         isSelected = [
-          SelectWidget(
+          SelectedWidget(
             isSelected: esColorActual(Colors.yellow[300]),
             color: Colors.yellow[300],
           ),
-          SelectWidget(
+          SelectedWidget(
             isSelected: esColorActual(Colors.red[300]),
             color: Colors.red[300],
           ),
-          SelectWidget(
+          SelectedWidget(
             isSelected: esColorActual(Colors.blue[300]),
             color: Colors.blue[300],
           ),
-          SelectWidget(
+          SelectedWidget(
             isSelected: esColorActual(
               Colors.green[300],
             ),
             color: Colors.green[300],
           ),
-          SelectWidget(
-            isSelected: esColorActual(Colors.purple[300]),
+          SelectedWidget(
+            isSelected: esColorActual(
+              Colors.purple[300],
+            ),
             color: Colors.purple[300],
           ),
         ];
@@ -124,18 +99,16 @@ class BarraColoresImpl extends State<BarraColores> {
             isSelected[i].setSelected(selected);
           }
         });
-        Parametro parametro =
-            parametros.where((x) => x.clave == nombreParametro).first;
 
-        parametro.setValor(
+        colorFondo.setValor(
             ColorParser.color(getSelectedWidget(isSelected).color).toHex());
-        ParametroDAO.updateParametro(parametro);
+        ParametroDAO.updateParametro(colorFondo);
       },
       isSelected: getListBoolSelected(isSelected),
     );
   }
 
-  List<bool> getListBoolSelected(List<SelectWidget> isSelectedList) {
+  List<bool> getListBoolSelected(List<SelectedWidget> isSelectedList) {
     List<bool> isSelectedBool = new List<bool>();
     for (int i = 0; i < isSelected.length; i++) {
       isSelectedBool.add(isSelected[i].isSelected);
@@ -143,8 +116,8 @@ class BarraColoresImpl extends State<BarraColores> {
     return isSelectedBool;
   }
 
-  SelectWidget getSelectedWidget(List<SelectWidget> isSelected) {
-    SelectWidget selected;
+  SelectedWidget getSelectedWidget(List<SelectedWidget> isSelected) {
+    SelectedWidget selected;
     for (int i = 0; i < isSelected.length; i++) {
       if (isSelected[i].isSelected) {
         selected = isSelected[i];
@@ -154,10 +127,7 @@ class BarraColoresImpl extends State<BarraColores> {
     return selected;
   }
 
-//Esto no funciona
   bool esColorActual(Color color) {
-    // Parametro colorFondo =
-    //     parametros.where((x) => x.clave == nombreParametro).first;
     return colorFondo.valor == ColorParser.color(color).toHex();
   }
 }

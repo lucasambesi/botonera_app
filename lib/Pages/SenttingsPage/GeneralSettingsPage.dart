@@ -24,7 +24,9 @@ class PantallaGeneralSettingsImpl extends State<PantallaGeneralSettings> {
                 children: [
                   Text('Tema general de Aplicacion:'),
                   Spacer(),
-                  BarraColores(),
+                  BarraColores(
+                    nombreParametro: 'colorFondo',
+                  ),
                 ],
               ),
             ),

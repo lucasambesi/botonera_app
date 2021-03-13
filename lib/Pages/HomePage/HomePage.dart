@@ -1,4 +1,7 @@
 import 'dart:io' show Platform, exit;
+import 'package:botonera_app/db/ParametroDAO.dart';
+import 'package:botonera_app/models/Parametro.dart';
+import 'package:color_parser/color_parser.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,13 +25,36 @@ class HomePageImpl extends State<HomePage> {
   }
 }
 
-class PantallaPrincipal extends StatelessWidget {
+class PantallaPrincipal extends StatefulWidget {
+  PantallaPrincipal({Key key}) : super(key: key);
+
+  @override
+  PantallaPrincipalImpl createState() => PantallaPrincipalImpl();
+}
+
+class PantallaPrincipalImpl extends State<PantallaPrincipal> {
+  Parametro colorFondo;
+
+  @override
+  void initState() {
+    super.initState();
+    setColor();
+  }
+
+  Future<void> setColor() async {
+    ParametroDAO.getParametro("colorFondo").then((content) {
+      setState(() {
+        colorFondo = content;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: ColorParser.hex(colorFondo.valor).getColor(),
         ),
         child: MenuPrincipal(),
       ),
@@ -65,7 +91,7 @@ class FlexibleLogoHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: Center(
-        child: Image.asset('assets/images/logo_home.jpg',
+        child: Image.asset('assets/images/logo_home.png',
             width: MediaQuery.of(context).size.width * 1),
       ),
       flex: 4,

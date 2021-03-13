@@ -1,3 +1,4 @@
+import 'package:botonera_app/Pages/HomePage/HomePage.dart';
 import 'package:botonera_app/Pages/SenttingsPage/AudioCategoriaSettings.dart';
 import 'package:botonera_app/Pages/SenttingsPage/GeneralSettingsPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,21 +27,29 @@ class PantallaConfiguracionImpl extends State<PantallaConfiguracion> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: _tabs.length,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Configuración'),
-          backgroundColor: Colors.yellow[300],
-          shadowColor: Colors.white,
-          bottom: TabBar(
-            tabs: _tabs,
+    return WillPopScope(
+      child: DefaultTabController(
+        length: _tabs.length,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Configuración'),
+            backgroundColor: Colors.yellow[300],
+            shadowColor: Colors.white,
+            bottom: TabBar(
+              tabs: _tabs,
+            ),
+          ),
+          body: TabBarView(
+            children: _tabPages,
           ),
         ),
-        body: TabBarView(
-          children: _tabPages,
-        ),
       ),
+      onWillPop: () async => pushPage(context, HomePage()),
     );
+  }
+
+  Future<T> pushPage<T>(BuildContext context, Widget page) {
+    return Navigator.of(context)
+        .push<T>(MaterialPageRoute(builder: (context) => page));
   }
 }

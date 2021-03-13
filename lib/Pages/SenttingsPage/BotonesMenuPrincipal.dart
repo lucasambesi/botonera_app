@@ -134,11 +134,11 @@ class BotonImpl extends State<Boton> {
                       'Elegir color',
                     ),
                     onPressed: () {
+                      changeColor(pickedColor);
                       parametro
                           .setValor(ColorParser.color(currentColor).toHex());
                       ParametroDAO.updateParametro(parametro);
 
-                      changeColor(pickedColor);
                       Navigator.of(context).pop();
                     },
                   ),

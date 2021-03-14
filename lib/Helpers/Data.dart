@@ -5,10 +5,6 @@ class DataDB {
   static getParametros() {
     var parametros = [
       {
-        "clave": "colorTema",
-        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
-      },
-      {
         "clave": "colorBotonSonidos",
         "valor": ColorParser.color(Colors.yellow[300]).toHex(),
       },
@@ -21,8 +17,24 @@ class DataDB {
         "valor": ColorParser.color(Colors.yellow[300]).toHex(),
       },
       {
-        "clave": "colorFondo",
-        "valor": ColorParser.color(Colors.black).toHex(),
+        "clave": "colorFondoMenu",
+        "valor": ColorParser.color(Colors.white).toHex(),
+      },
+      {
+        "clave": "colorFondoSonidos",
+        "valor": ColorParser.color(Colors.white).toHex(),
+      },
+      {
+        "clave": "colorFondoConfig",
+        "valor": ColorParser.color(Colors.white).toHex(),
+      },
+      {
+        "clave": "colorBarraSuperior",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      },
+      {
+        "clave": "colorBarraInferior",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
       }
     ];
 

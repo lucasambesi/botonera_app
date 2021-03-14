@@ -15,7 +15,7 @@ class BarraColores extends StatefulWidget {
 class BarraColoresImpl extends State<BarraColores> {
   List<SelectedWidget> isSelected;
   List<Parametro> parametros;
-  Parametro colorFondo;
+  Parametro parametro;
   final String nombreParametro;
   BarraColoresImpl({@required this.nombreParametro});
   @override
@@ -26,11 +26,11 @@ class BarraColoresImpl extends State<BarraColores> {
 
   Future<void> setColor() async {
     List<Parametro> params = await ParametroDAO.getParametros();
-    Parametro colorFondoAux =
+    Parametro parametroAux =
         params.where((x) => x.clave == nombreParametro).first;
     setState(() {
       parametros = params;
-      colorFondo = colorFondoAux;
+      parametro = parametroAux;
       setIsSelected();
     });
   }
@@ -100,9 +100,9 @@ class BarraColoresImpl extends State<BarraColores> {
           }
         });
 
-        colorFondo.setValor(
+        parametro.setValor(
             ColorParser.color(getSelectedWidget(isSelected).color).toHex());
-        ParametroDAO.updateParametro(colorFondo);
+        ParametroDAO.updateParametro(parametro);
       },
       isSelected: getListBoolSelected(isSelected),
     );
@@ -128,7 +128,7 @@ class BarraColoresImpl extends State<BarraColores> {
   }
 
   bool esColorActual(Color color) {
-    return colorFondo.valor == ColorParser.color(color).toHex();
+    return parametro.valor == ColorParser.color(color).toHex();
   }
 }
 

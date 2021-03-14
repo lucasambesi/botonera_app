@@ -33,7 +33,7 @@ class PantallaPrincipal extends StatefulWidget {
 }
 
 class PantallaPrincipalImpl extends State<PantallaPrincipal> {
-  Color colorFondo;
+  Color colorFondoMenu;
 
   @override
   void initState() {
@@ -42,9 +42,9 @@ class PantallaPrincipalImpl extends State<PantallaPrincipal> {
   }
 
   Future<void> setColor() async {
-    ParametroDAO.getParametro("colorFondo").then((content) {
+    ParametroDAO.getParametro("colorFondoMenu").then((content) {
       setState(() {
-        colorFondo = ColorParser.hex(content.valor).getColor();
+        colorFondoMenu = ColorParser.hex(content.valor).getColor();
       });
     });
   }
@@ -54,7 +54,7 @@ class PantallaPrincipalImpl extends State<PantallaPrincipal> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: colorFondo,
+          color: colorFondoMenu,
         ),
         child: MenuPrincipal(),
       ),

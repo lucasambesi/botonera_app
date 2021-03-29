@@ -1,4 +1,46 @@
+import 'package:color_parser/color_parser.dart';
+import 'package:flutter/material.dart';
+
 class DataDB {
+  static getParametros() {
+    var parametros = [
+      {
+        "clave": "colorBotonSonidos",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      },
+      {
+        "clave": "colorBotonConfig",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      },
+      {
+        "clave": "colorBotonSalir",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      },
+      {
+        "clave": "colorFondoMenu",
+        "valor": ColorParser.color(Colors.white).toHex(),
+      },
+      {
+        "clave": "colorFondoSonidos",
+        "valor": ColorParser.color(Colors.white).toHex(),
+      },
+      {
+        "clave": "colorFondoConfig",
+        "valor": ColorParser.color(Colors.white).toHex(),
+      },
+      {
+        "clave": "colorBarraSuperior",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      },
+      {
+        "clave": "colorBarraInferior",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      }
+    ];
+
+    return parametros;
+  }
+
   static getData() {
     var data = [
       {

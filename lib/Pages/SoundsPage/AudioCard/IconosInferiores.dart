@@ -1,4 +1,4 @@
-import 'package:botonera_app/db/AudioDAO.dart';
+import 'package:botonera_app/db/DAOs/AudioDAO.dart';
 import 'package:botonera_app/models/Audio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -149,7 +149,7 @@ class IconosInferioresImpl extends State<IconosInferiores> {
         //     await rootBundle.load('assets/audios/$nombreAudio.mp3');
 
         final ByteData bytes =
-            await rootBundle.load('assets/images/logo_home.jpg');
+            await rootBundle.load('assets/images/logo_home.png');
         Share.file(
             nombreAudio, nombreAudio, bytes.buffer.asInt8List(), 'image/jpg');
       },

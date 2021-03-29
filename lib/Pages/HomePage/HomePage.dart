@@ -1,12 +1,14 @@
-import 'dart:io' show Platform, exit;
+import 'package:botonera_app/Pages/HomePage/BotonConfiguracion.dart';
+import 'package:botonera_app/Pages/HomePage/BotonSalir.dart';
+import 'package:botonera_app/Pages/HomePage/BotonSonidos.dart';
+import 'package:botonera_app/Pages/HomePage/LogoHome.dart';
 import 'package:botonera_app/db/ParametroDAO.dart';
+import 'package:botonera_app/models/Parametro.dart';
+import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:color_parser/color_parser.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:botonera_app/Pages/SoundsPage/BottomNavigationBarSounds.dart';
-import 'package:botonera_app/Pages/SenttingsPage/SenttingsPage.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -18,9 +20,32 @@ class HomePage extends StatefulWidget {
 class HomePageImpl extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Botonera.App',
-      home: PantallaPrincipal(),
+    return FutureBuilder(
+      future: ParametroDAO.getParametros(),
+      builder: builderChangeNotifierProvider,
+    );
+  }
+
+  Widget builderChangeNotifierProvider(
+      BuildContext context, AsyncSnapshot<List<Parametro>> snapshot) {
+    if (snapshot.hasError) {
+      return Center(
+        child: Text('ERROR: ${snapshot.error.toString()}'),
+      );
+    }
+    if (!snapshot.hasData) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    return ChangeNotifierProvider<ParametrosProvider>(
+      create: (_) => ParametrosProvider(
+        parametros: snapshot.data,
+      ),
+      child: MaterialApp(
+        title: 'Botonera.App',
+        home: PantallaPrincipal(),
+      ),
     );
   }
 }
@@ -33,28 +58,14 @@ class PantallaPrincipal extends StatefulWidget {
 }
 
 class PantallaPrincipalImpl extends State<PantallaPrincipal> {
-  Color colorFondoMenu;
-
-  @override
-  void initState() {
-    super.initState();
-    setColor();
-  }
-
-  Future<void> setColor() async {
-    ParametroDAO.getParametro("colorFondoMenu").then((content) {
-      setState(() {
-        colorFondoMenu = ColorParser.hex(content.valor).getColor();
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final paramsProvider = Provider.of<ParametrosProvider>(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: colorFondoMenu,
+          color:
+              ColorParser.hex(paramsProvider.colorFondoMenu.valor).getColor(),
         ),
         child: MenuPrincipal(),
       ),
@@ -78,173 +89,6 @@ class MenuPrincipal extends StatelessWidget {
         SizedBox(height: 30),
         FlexibleSalir(),
       ],
-    );
-  }
-}
-
-class FlexibleLogoHome extends StatelessWidget {
-  const FlexibleLogoHome({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Flexible(
-      child: Center(
-        child: Image.asset('assets/images/logo_home.png',
-            width: MediaQuery.of(context).size.width * 1),
-      ),
-      flex: 4,
-    );
-  }
-}
-
-class FlexibleSonidos extends StatefulWidget {
-  FlexibleSonidos({Key key}) : super(key: key);
-
-  @override
-  FlexibleSonidosImpl createState() => FlexibleSonidosImpl();
-}
-
-class FlexibleSonidosImpl extends State<FlexibleSonidos> {
-  Color colorBoton;
-
-  @override
-  void initState() {
-    super.initState();
-    setColor();
-  }
-
-  Future<void> setColor() async {
-    ParametroDAO.getParametro("colorBotonSonidos").then((content) {
-      setState(() {
-        colorBoton = ColorParser.hex(content.valor).getColor();
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Flexible(
-      flex: 1,
-      child: ButtonTheme(
-        minWidth: 200,
-        height: 35,
-        child: RaisedButton(
-          child: Text('Sonidos'),
-          color: colorBoton,
-          textColor: useWhiteForeground(colorBoton)
-              ? const Color(0xffffffff)
-              : const Color(0xff000000),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => BarraNavegacion(),
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class FlexibleConfiguracion extends StatefulWidget {
-  FlexibleConfiguracion({Key key}) : super(key: key);
-
-  @override
-  FlexibleConfiguracionImpl createState() => FlexibleConfiguracionImpl();
-}
-
-class FlexibleConfiguracionImpl extends State<FlexibleConfiguracion> {
-  Color colorBoton;
-
-  @override
-  void initState() {
-    super.initState();
-    setColor();
-  }
-
-  Future<void> setColor() async {
-    ParametroDAO.getParametro("colorBotonConfig").then((content) {
-      setState(() {
-        colorBoton = ColorParser.hex(content.valor).getColor();
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Flexible(
-      flex: 1,
-      child: ButtonTheme(
-        minWidth: 200,
-        height: 35,
-        child: RaisedButton(
-          child: Text('Configuración'),
-          color: colorBoton,
-          textColor: useWhiteForeground(colorBoton)
-              ? const Color(0xffffffff)
-              : const Color(0xff000000),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => PantallaConfiguracion(),
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class FlexibleSalir extends StatefulWidget {
-  FlexibleSalir({Key key}) : super(key: key);
-
-  @override
-  FlexibleSalirImpl createState() => FlexibleSalirImpl();
-}
-
-class FlexibleSalirImpl extends State<FlexibleSalir> {
-  Color colorBoton;
-
-  @override
-  void initState() {
-    super.initState();
-    setColor();
-  }
-
-  Future<void> setColor() async {
-    ParametroDAO.getParametro("colorBotonSalir").then((content) {
-      setState(() {
-        colorBoton = ColorParser.hex(content.valor).getColor();
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Flexible(
-      flex: 1,
-      child: ButtonTheme(
-        minWidth: 200,
-        height: 35,
-        child: RaisedButton(
-          child: Text('Salir'),
-          color: colorBoton,
-          textColor: useWhiteForeground(colorBoton)
-              ? const Color(0xffffffff)
-              : const Color(0xff000000),
-          onPressed: () {
-            if (Platform.isAndroid) {
-              SystemNavigator.pop();
-            } else if (Platform.isIOS) {
-              exit(0);
-            }
-          },
-        ),
-      ),
     );
   }
 }

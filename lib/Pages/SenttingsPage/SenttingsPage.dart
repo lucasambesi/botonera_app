@@ -1,8 +1,10 @@
-import 'package:botonera_app/Pages/HomePage/HomePage.dart';
+import 'package:botonera_app/Helpers/Helpers.dart';
 import 'package:botonera_app/Pages/SenttingsPage/AudioCategoriaSettings.dart';
 import 'package:botonera_app/Pages/SenttingsPage/GeneralSettingsPage.dart';
+import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PantallaConfiguracion extends StatefulWidget {
   State<StatefulWidget> createState() => PantallaConfiguracionImpl();
@@ -27,29 +29,39 @@ class PantallaConfiguracionImpl extends State<PantallaConfiguracion> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      child: DefaultTabController(
-        length: _tabs.length,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Configuración'),
-            backgroundColor: Colors.yellow[300],
-            shadowColor: Colors.white,
-            bottom: TabBar(
-              tabs: _tabs,
+    var paramsProvider = Provider.of<ParametrosProvider>(context);
+    Color color = Helpers.getColorByParam(paramsProvider.colorBarraSuperior);
+    Color colorConstaste =
+        Helpers.getColorConstrastByParam(paramsProvider.colorBarraSuperior);
+    return DefaultTabController(
+      length: _tabs.length,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: colorConstaste),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(
+            'Configuración',
+            style: TextStyle(
+              color: colorConstaste,
             ),
           ),
-          body: TabBarView(
-            children: _tabPages,
+          backgroundColor: color,
+          shadowColor: color,
+          bottom: TabBar(
+            tabs: _tabs,
+            labelColor: colorConstaste,
+            indicatorColor: colorConstaste,
           ),
         ),
+        body: Padding(
+          child: TabBarView(
+            children: _tabPages,
+          ),
+          padding: EdgeInsets.only(top: 8.0),
+        ),
       ),
-      onWillPop: () async => pushPage(context, HomePage()),
     );
-  }
-
-  Future<T> pushPage<T>(BuildContext context, Widget page) {
-    return Navigator.of(context)
-        .push<T>(MaterialPageRoute(builder: (context) => page));
   }
 }

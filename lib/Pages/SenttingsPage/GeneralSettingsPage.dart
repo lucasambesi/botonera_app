@@ -10,35 +10,29 @@ class PantallaGeneralSettings extends StatefulWidget {
 class PantallaGeneralSettingsImpl extends State<PantallaGeneralSettings> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(8.0),
-      children: [
-        Row(
-          children: [
-            ConfiguracionCard(
-              nombreTitulo: 'Color de Fondo Menu',
-              nombreParametro: 'colorFondoMenu',
-            ),
-            ConfiguracionCard(
-              nombreTitulo: 'Color de Fondo Sonidos',
-              nombreParametro: 'colorFondoSonidos',
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            ConfiguracionCard(
-              nombreTitulo: 'Color de Barra Superior',
-              nombreParametro: 'colorBarraSuperior',
-            ),
-            ConfiguracionCard(
-              nombreTitulo: 'Color de Barra Inferiror',
-              nombreParametro: 'colorBarraInferior',
-            ),
-          ],
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
+      child: GridView.count(crossAxisCount: (2), children: <Widget>[
         BotonesMenuPrincipal(),
-      ],
+        ConfiguracionCard(
+          nombreTitulo: 'Color fondo Sonidos',
+          nombreParametro: 'colorFondoSonidos',
+        ),
+        ConfiguracionCard(
+          nombreTitulo: 'Color fondo Menu Principal',
+          nombreParametro: 'colorFondoMenu',
+        ),
+        ConfiguracionCard(
+          nombreTitulo: 'Color barra Superior',
+          nombreParametro: 'colorBarraSuperior',
+        ),
+        ConfiguracionCard(
+          nombreTitulo: 'Color barra Inferior',
+          nombreParametro: 'colorBarraInferior',
+        ),
+      ]),
     );
   }
 }

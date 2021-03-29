@@ -1,59 +1,35 @@
+import 'package:botonera_app/Helpers/Helpers.dart';
 import 'package:botonera_app/Pages/SoundsPage/FBCards.dart';
 import 'package:botonera_app/db/AudioDAO.dart';
-import 'package:botonera_app/db/ParametroDAO.dart';
-import 'package:color_parser/color_parser.dart';
+import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:provider/provider.dart';
 
 class PantallaFavoritos extends StatefulWidget {
   State<StatefulWidget> createState() => PantallaFavoritosImpl();
 }
 
 class PantallaFavoritosImpl extends State<PantallaFavoritos> {
-  Color colorFondoSonidos;
-  Color colorbarraSuperior;
-
-  @override
-  void initState() {
-    super.initState();
-    setcolorFondoSonidos();
-    setcolorBarraSuperior();
-  }
-
-  Future<void> setcolorFondoSonidos() async {
-    ParametroDAO.getParametro("colorFondoSonidos").then((content) {
-      setState(() {
-        colorFondoSonidos = ColorParser.hex(content.valor).getColor();
-      });
-    });
-  }
-
-  Future<void> setcolorBarraSuperior() async {
-    ParametroDAO.getParametro("colorBarraSuperior").then((content) {
-      setState(() {
-        colorbarraSuperior = ColorParser.hex(content.valor).getColor();
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final paramsProvider = Provider.of<ParametrosProvider>(context);
     return MaterialApp(
       theme: new ThemeData(
-        scaffoldBackgroundColor: colorFondoSonidos,
+        scaffoldBackgroundColor:
+            Helpers.getColorByParam(paramsProvider.colorFondoSonidos),
       ),
       home: Scaffold(
         appBar: AppBar(
           title: Text(
             'Favoritos',
             style: TextStyle(
-              color: useWhiteForeground(colorbarraSuperior)
-                  ? const Color(0xffffffff)
-                  : const Color(0xff000000),
+              color: Helpers.getColorConstrastByParam(
+                  paramsProvider.colorBarraSuperior),
             ),
           ),
-          backgroundColor: colorbarraSuperior,
+          backgroundColor:
+              Helpers.getColorByParam(paramsProvider.colorBarraSuperior),
           shadowColor: Colors.white,
         ),
         body: Padding(

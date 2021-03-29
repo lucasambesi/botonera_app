@@ -1,9 +1,8 @@
-import 'package:botonera_app/db/ParametroDAO.dart';
-import 'package:botonera_app/models/Parametro.dart';
-import 'package:color_parser/color_parser.dart';
+import 'package:botonera_app/Pages/SenttingsPage/ConfigBotonMenu.dart';
+import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:provider/provider.dart';
 
 class BotonesMenuPrincipal extends StatefulWidget {
   BotonesMenuPrincipal();
@@ -18,10 +17,13 @@ class BotonesMenuPrincipalImpl extends State<BotonesMenuPrincipal> {
 
   @override
   Widget build(BuildContext context) {
+    var paramsProvider = Provider.of<ParametrosProvider>(
+      context,
+      listen: false,
+    );
     return Card(
       elevation: 2.0,
       child: SizedBox(
-        height: 200.0,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
@@ -38,115 +40,31 @@ class BotonesMenuPrincipalImpl extends State<BotonesMenuPrincipal> {
               ),
               Spacer(),
               Expanded(
-                child: Boton(
+                child: ConfigBotonMenu(
                   nombreBoton: 'Sonidos',
-                  nombreParametro: 'colorBotonSonidos',
+                  parametro:
+                      paramsProvider.getParametroByClave('colorBotonSonidos'),
                 ),
               ),
               Spacer(),
               Expanded(
-                child: Boton(
+                child: ConfigBotonMenu(
                   nombreBoton: 'Configuración',
-                  nombreParametro: 'colorBotonConfig',
+                  parametro:
+                      paramsProvider.getParametroByClave('colorBotonConfig'),
                 ),
               ),
               Spacer(),
               Expanded(
-                child: Boton(
+                child: ConfigBotonMenu(
                   nombreBoton: 'Salir',
-                  nombreParametro: 'colorBotonSalir',
+                  parametro:
+                      paramsProvider.getParametroByClave('colorBotonSalir'),
                 ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class Boton extends StatefulWidget {
-  final String nombreBoton;
-  final String nombreParametro;
-  Boton({@required this.nombreBoton, @required this.nombreParametro});
-
-  State<StatefulWidget> createState() => BotonImpl(
-        nombreBoton: nombreBoton,
-        nombreParametro: nombreParametro,
-      );
-}
-
-class BotonImpl extends State<Boton> {
-  final String nombreBoton;
-  final String nombreParametro;
-  Color currentColor;
-  Color pickedColor;
-  Parametro parametro;
-
-  BotonImpl({@required this.nombreBoton, @required this.nombreParametro});
-  void changeColor(Color color) => setState(() => currentColor = color);
-  void selectColor(Color color) => setState(() => pickedColor = color);
-  @override
-  void initState() {
-    super.initState();
-    setColor();
-  }
-
-  Future<void> setColor() async {
-    List<Parametro> params = await ParametroDAO.getParametros();
-    Parametro paramAux = params.where((x) => x.clave == nombreParametro).first;
-    setState(() {
-      parametro = paramAux;
-      currentColor = ColorParser.hex(paramAux.valor).getColor();
-      pickedColor = currentColor;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonTheme(
-      minWidth: 200,
-      height: 35,
-      child: RaisedButton(
-        child: Text(nombreBoton),
-        color: currentColor,
-        textColor: useWhiteForeground(currentColor)
-            ? const Color(0xffffffff)
-            : const Color(0xff000000),
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                titlePadding: const EdgeInsets.all(0.0),
-                contentPadding: const EdgeInsets.all(0.0),
-                content: SingleChildScrollView(
-                  child: MaterialPicker(
-                    pickerColor: currentColor,
-                    onColorChanged: selectColor,
-                    enableLabel: true,
-                  ),
-                ),
-                actions: <Widget>[
-                  FlatButton(
-                    textColor: Colors.black,
-                    child: Text(
-                      'Elegir color',
-                    ),
-                    onPressed: () {
-                      changeColor(pickedColor);
-                      parametro
-                          .setValor(ColorParser.color(currentColor).toHex());
-                      ParametroDAO.updateParametro(parametro);
-
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              );
-            },
-          );
-        },
       ),
     );
   }

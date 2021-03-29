@@ -1,6 +1,6 @@
 import 'package:botonera_app/Helpers/Helpers.dart';
-import 'package:botonera_app/Pages/SenttingsPage/AudioCategoriaSettings.dart';
-import 'package:botonera_app/Pages/SenttingsPage/GeneralSettingsPage.dart';
+import 'package:botonera_app/Pages/SenttingsPage/AudioCategoriaSettings/AudioCategoriaSettingsPage.dart';
+import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/GeneralSettingsPage.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

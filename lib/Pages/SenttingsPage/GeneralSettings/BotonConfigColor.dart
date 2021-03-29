@@ -8,7 +8,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 
 class BotonConfigColor extends StatefulWidget {
-  Parametro parametro;
+  final Parametro parametro;
 
   BotonConfigColor({
     @required this.parametro,

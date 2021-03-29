@@ -1,4 +1,4 @@
-import 'package:botonera_app/Pages/SenttingsPage/ConfigBotonMenu.dart';
+import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/ConfigBotonMenu.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
 import 'package:botonera_app/Helpers/Helpers.dart';
-import 'package:botonera_app/Pages/SoundsPage/FBCards.dart';
+import 'package:botonera_app/Pages/SoundsPage/AudioCard/FBAudiosCards.dart';
 import 'package:botonera_app/db/AudioDAO.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';

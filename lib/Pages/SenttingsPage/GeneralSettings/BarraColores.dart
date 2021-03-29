@@ -1,3 +1,4 @@
+import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/SubColor.dart';
 import 'package:botonera_app/db/ParametroDAO.dart';
 import 'package:botonera_app/models/Parametro.dart';
 import 'package:botonera_app/models/SelectedWidget.dart';
@@ -129,29 +130,5 @@ class BarraColoresImpl extends State<BarraColores> {
 
   bool esColorActual(Color color) {
     return parametro.valor == ColorParser.color(color).toHex();
-  }
-}
-
-class SubColor extends StatefulWidget {
-  final Color color;
-
-  SubColor({@required this.color});
-
-  State<StatefulWidget> createState() => SubColorImpl(color: color);
-}
-
-class SubColorImpl extends State<SubColor> {
-  final Color color;
-  List<bool> isSelected;
-
-  SubColorImpl({@required this.color});
-
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(25),
-      decoration: BoxDecoration(
-        color: color,
-      ),
-    );
   }
 }

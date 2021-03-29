@@ -1,5 +1,6 @@
-import 'package:botonera_app/Pages/SenttingsPage/BotonesMenuPrincipal.dart';
-import 'package:botonera_app/Pages/SenttingsPage/ConfiguracionCard.dart';
+import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/BarraColores.dart';
+import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/BotonesMenuPrincipal.dart';
+import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/ConfiguracionCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:botonera_app/Pages/SoundsPage/AudioCard.dart';
+import 'package:botonera_app/Pages/SoundsPage/AudioCard/AudioCard.dart';
 import 'package:botonera_app/models/Audio.dart';
 import 'package:botonera_app/models/Categoria.dart';
 import 'package:flutter/cupertino.dart';

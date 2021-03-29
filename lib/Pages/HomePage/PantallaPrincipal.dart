@@ -1,6 +1,6 @@
-import 'package:botonera_app/Pages/HomePage/BotonConfiguracion.dart';
-import 'package:botonera_app/Pages/HomePage/BotonSalir.dart';
-import 'package:botonera_app/Pages/HomePage/BotonSonidos.dart';
+import 'package:botonera_app/Pages/HomePage/Botones/BotonConfiguracion.dart';
+import 'package:botonera_app/Pages/HomePage/Botones/BotonSalir.dart';
+import 'package:botonera_app/Pages/HomePage/Botones/BotonSonidos.dart';
 import 'package:botonera_app/Pages/HomePage/LogoHome.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:color_parser/color_parser.dart';

@@ -1,5 +1,5 @@
 import 'package:botonera_app/Pages/HomePage/PantallaPrincipal.dart';
-import 'package:botonera_app/db/ParametroDAO.dart';
+import 'package:botonera_app/db/DAOs/ParametroDAO.dart';
 import 'package:botonera_app/models/Parametro.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/material.dart';

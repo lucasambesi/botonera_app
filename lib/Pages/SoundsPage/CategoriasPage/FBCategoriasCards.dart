@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:botonera_app/Pages/SoundsPage/CategoriasPage/CategoriaAudiosPage.dart';
 import 'package:botonera_app/Pages/SoundsPage/CategoriasPage/CategoriaCard.dart';
-import 'package:botonera_app/db/CategoriaDAO.dart';
+import 'package:botonera_app/db/DAOs/CategoriaDAO.dart';
 import 'package:botonera_app/models/Categoria.dart';
 
 class FBCategoriaCards extends StatefulWidget {

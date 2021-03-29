@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:botonera_app/Pages/SoundsPage/AudioCard/FBAudiosCards.dart';
-import 'package:botonera_app/db/AudioDAO.dart';
+import 'package:botonera_app/db/DAOs/AudioDAO.dart';
 import 'package:botonera_app/models/Categoria.dart';
 
 class CategoriaAudiosPage extends StatefulWidget {

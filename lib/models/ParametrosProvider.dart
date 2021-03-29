@@ -1,4 +1,3 @@
-import 'package:botonera_app/db/ParametroDAO.dart';
 import 'package:botonera_app/models/Parametro.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -54,7 +53,7 @@ class ParametrosProvider with ChangeNotifier {
         return colorBarraInferior;
         break;
       default:
-        Exception('No se encontro el parametro solicitado');
+        return null;
     }
   }
 

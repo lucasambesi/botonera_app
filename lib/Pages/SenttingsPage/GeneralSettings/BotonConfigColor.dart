@@ -1,4 +1,4 @@
-import 'package:botonera_app/db/ParametroDAO.dart';
+import 'package:botonera_app/db/DAOs/ParametroDAO.dart';
 import 'package:botonera_app/models/Parametro.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:color_parser/color_parser.dart';

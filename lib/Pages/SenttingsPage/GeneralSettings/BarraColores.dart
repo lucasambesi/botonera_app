@@ -1,5 +1,5 @@
 import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/SubColor.dart';
-import 'package:botonera_app/db/ParametroDAO.dart';
+import 'package:botonera_app/db/DAOs/ParametroDAO.dart';
 import 'package:botonera_app/models/Parametro.dart';
 import 'package:botonera_app/models/SelectedWidget.dart';
 import 'package:color_parser/color_parser.dart';

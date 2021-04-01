@@ -39,6 +39,30 @@ class DataDB {
       {
         "clave": "colorBarraInferior",
         "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      },
+      {
+        "clave": "colorFondoAudio",
+        "valor": ColorParser.color(Colors.white).toHex(),
+      },
+      {
+        "clave": "colorBotonAudio",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      },
+      {
+        "clave": "colorIconosAudio",
+        "valor": ColorParser.color(Colors.black).toHex(),
+      },
+      {
+        "clave": "colorEnFavoritos",
+        "valor": ColorParser.color(Colors.yellow).toHex(),
+      },
+      {
+        "clave": "colorFondoInfoAudio",
+        "valor": ColorParser.color(Colors.white).toHex(),
+      },
+      {
+        "clave": "colorFondoCategoria",
+        "valor": ColorParser.color(Colors.white).toHex(),
       }
     ];
 

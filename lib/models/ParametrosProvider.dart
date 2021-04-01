@@ -11,6 +11,12 @@ class ParametrosProvider with ChangeNotifier {
   Parametro _colorFondoConfig;
   Parametro _colorBarraSuperior;
   Parametro _colorBarraInferior;
+  Parametro _colorFondoAudio;
+  Parametro _colorBotonAudio;
+  Parametro _colorIconosAudio;
+  Parametro _colorEnFavoritos;
+  Parametro _colorFondoInfoAudio;
+  Parametro _colorFondoCategoria;
 
   ParametrosProvider({
     @required List<Parametro> parametros,
@@ -27,6 +33,12 @@ class ParametrosProvider with ChangeNotifier {
   Parametro get colorFondoConfig => _colorFondoConfig;
   Parametro get colorBarraSuperior => _colorBarraSuperior;
   Parametro get colorBarraInferior => _colorBarraInferior;
+  Parametro get colorFondoAudio => _colorFondoAudio;
+  Parametro get colorBotonAudio => _colorBotonAudio;
+  Parametro get colorIconosAudio => _colorIconosAudio;
+  Parametro get colorEnFavoritos => _colorEnFavoritos;
+  Parametro get colorFondoInfoAudio => _colorFondoInfoAudio;
+  Parametro get colorFondoCategoria => _colorFondoCategoria;
 
   Parametro getParametroByClave(String clave) {
     switch (clave) {
@@ -57,6 +69,24 @@ class ParametrosProvider with ChangeNotifier {
       case "colorBarraInferior":
         return colorBarraInferior;
         break;
+      case "colorFondoAudio":
+        return colorFondoAudio;
+        break;
+      case "colorBotonAudio":
+        return colorBotonAudio;
+        break;
+      case "colorIconosAudio":
+        return colorIconosAudio;
+        break;
+      case "colorEnFavoritos":
+        return colorEnFavoritos;
+        break;
+      case "colorFondoInfoAudio":
+        return colorFondoInfoAudio;
+        break;
+      case "colorFondoCategoria":
+        return colorFondoCategoria;
+        break;
       default:
         return null;
     }
@@ -65,79 +95,127 @@ class ParametrosProvider with ChangeNotifier {
   void setParametrosProvider(Parametro parametro) {
     switch (parametro.clave) {
       case "colorFondoMenu":
-        setcolorFondoMenu(parametro);
+        setColorFondoMenu(parametro);
         break;
       case "colorBotonSonidos":
-        setcolorBotonSonidos(parametro);
+        setColorBotonSonidos(parametro);
         break;
       case "colorBotonConfig":
-        setcolorBotonConfig(parametro);
+        setColorBotonConfig(parametro);
         break;
       case "colorBotonCreditos":
-        setcolorBotonCreditos(parametro);
+        setColorBotonCreditos(parametro);
         break;
       case "colorBotonSalir":
-        setcolorBotonSalir(parametro);
+        setColorBotonSalir(parametro);
         break;
       case "colorFondoSonidos":
-        setcolorFondoSonidos(parametro);
+        setColorFondoSonidos(parametro);
         break;
       case "colorFondoConfig":
-        setcolorFondoConfig(parametro);
+        setColorFondoConfig(parametro);
         break;
       case "colorBarraSuperior":
-        setcolorBarraSuperior(parametro);
+        setColorBarraSuperior(parametro);
         break;
       case "colorBarraInferior":
-        setcolorBarraInferior(parametro);
+        setColorBarraInferior(parametro);
+        break;
+      case "colorFondoAudio":
+        setColorFondoAudio(parametro);
+        break;
+      case "colorBotonAudio":
+        setColorBotonAudio(parametro);
+        break;
+      case "colorIconosAudio":
+        setColorIconosAudio(parametro);
+        break;
+      case "colorEnFavoritos":
+        setColorEnFavoritos(parametro);
+        break;
+      case "colorFondoInfoAudio":
+        setColorFondoInfoAudio(parametro);
+        break;
+      case "colorFondoCategoria":
+        setColorFondoCategoria(parametro);
         break;
       default:
         break;
     }
   }
 
-  void setcolorFondoMenu(Parametro colorFondoMenu) {
+  void setColorFondoMenu(Parametro colorFondoMenu) {
     this._colorFondoMenu = colorFondoMenu;
     notifyListeners();
   }
 
-  void setcolorBotonSonidos(Parametro colorBotonSonidos) {
+  void setColorBotonSonidos(Parametro colorBotonSonidos) {
     this._colorBotonSonidos = colorBotonSonidos;
     notifyListeners();
   }
 
-  void setcolorBotonConfig(Parametro colorBotonConfig) {
+  void setColorBotonConfig(Parametro colorBotonConfig) {
     this._colorBotonConfig = colorBotonConfig;
     notifyListeners();
   }
 
-  void setcolorBotonCreditos(Parametro colorBotonCreditos) {
+  void setColorBotonCreditos(Parametro colorBotonCreditos) {
     this._colorBotonCreditos = colorBotonCreditos;
     notifyListeners();
   }
 
-  void setcolorBotonSalir(Parametro colorBotonSalir) {
+  void setColorBotonSalir(Parametro colorBotonSalir) {
     this._colorBotonSalir = colorBotonSalir;
     notifyListeners();
   }
 
-  void setcolorFondoSonidos(Parametro colorFondoSonidos) {
+  void setColorFondoSonidos(Parametro colorFondoSonidos) {
     this._colorFondoSonidos = colorFondoSonidos;
     notifyListeners();
   }
 
-  void setcolorFondoConfig(Parametro colorFondoConfig) {
+  void setColorFondoConfig(Parametro colorFondoConfig) {
     this._colorFondoConfig = colorFondoConfig;
     notifyListeners();
   }
 
-  void setcolorBarraSuperior(Parametro colorBarraSuperior) {
+  void setColorBarraSuperior(Parametro colorBarraSuperior) {
     this._colorBarraSuperior = colorBarraSuperior;
     notifyListeners();
   }
 
-  void setcolorBarraInferior(Parametro colorBarraInferior) {
+  void setColorBarraInferior(Parametro colorBarraInferior) {
     this._colorBarraInferior = colorBarraInferior;
+    notifyListeners();
+  }
+
+  void setColorFondoAudio(Parametro colorFondoAudio) {
+    this._colorFondoAudio = colorFondoAudio;
+    notifyListeners();
+  }
+
+  void setColorBotonAudio(Parametro colorBotonAudio) {
+    this._colorBotonAudio = colorBotonAudio;
+    notifyListeners();
+  }
+
+  void setColorIconosAudio(Parametro colorIconosAudio) {
+    this._colorIconosAudio = colorIconosAudio;
+    notifyListeners();
+  }
+
+  void setColorEnFavoritos(Parametro colorEnFavoritos) {
+    this._colorEnFavoritos = colorEnFavoritos;
+    notifyListeners();
+  }
+
+  void setColorFondoInfoAudio(Parametro colorFondoInfoAudio) {
+    this._colorFondoInfoAudio = colorFondoInfoAudio;
+    notifyListeners();
+  }
+
+  void setColorFondoCategoria(Parametro colorFondoCategoria) {
+    this._colorFondoCategoria = colorFondoCategoria;
     notifyListeners();
   }
 }

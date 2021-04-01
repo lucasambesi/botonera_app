@@ -19,8 +19,8 @@ class FlexibleSonidosImpl extends State<FlexibleSonidos> {
     return Flexible(
       flex: 1,
       child: ButtonTheme(
-        minWidth: 200,
-        height: 35,
+        minWidth: 300,
+        height: 50,
         child: RaisedButton(
           child: Text('Sonidos'),
           color: Helpers.getColorByParam(paramsProvider.colorBotonSonidos),

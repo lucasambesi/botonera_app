@@ -20,8 +20,8 @@ class FlexibleSalirImpl extends State<FlexibleSalir> {
     return Flexible(
       flex: 1,
       child: ButtonTheme(
-        minWidth: 200,
-        height: 35,
+        minWidth: 300,
+        height: 50,
         child: RaisedButton(
           child: Text('Salir'),
           color: Helpers.getColorByParam(paramsProvider.colorBotonSalir),

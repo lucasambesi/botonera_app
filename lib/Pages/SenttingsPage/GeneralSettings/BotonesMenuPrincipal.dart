@@ -57,6 +57,14 @@ class BotonesMenuPrincipalImpl extends State<BotonesMenuPrincipal> {
               Spacer(),
               Expanded(
                 child: ConfigBotonMenu(
+                  nombreBoton: 'Créditos',
+                  parametro:
+                      paramsProvider.getParametroByClave('colorBotonCreditos'),
+                ),
+              ),
+              Spacer(),
+              Expanded(
+                child: ConfigBotonMenu(
                   nombreBoton: 'Salir',
                   parametro:
                       paramsProvider.getParametroByClave('colorBotonSalir'),

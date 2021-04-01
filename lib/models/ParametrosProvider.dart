@@ -5,6 +5,7 @@ class ParametrosProvider with ChangeNotifier {
   Parametro _colorFondoMenu;
   Parametro _colorBotonSonidos;
   Parametro _colorBotonConfig;
+  Parametro _colorBotonCreditos;
   Parametro _colorBotonSalir;
   Parametro _colorFondoSonidos;
   Parametro _colorFondoConfig;
@@ -20,6 +21,7 @@ class ParametrosProvider with ChangeNotifier {
   Parametro get colorFondoMenu => _colorFondoMenu;
   Parametro get colorBotonSonidos => _colorBotonSonidos;
   Parametro get colorBotonConfig => _colorBotonConfig;
+  Parametro get colorBotonCreditos => _colorBotonCreditos;
   Parametro get colorBotonSalir => _colorBotonSalir;
   Parametro get colorFondoSonidos => _colorFondoSonidos;
   Parametro get colorFondoConfig => _colorFondoConfig;
@@ -33,6 +35,9 @@ class ParametrosProvider with ChangeNotifier {
         break;
       case "colorBotonSonidos":
         return colorBotonSonidos;
+        break;
+      case "colorBotonCreditos":
+        return colorBotonCreditos;
         break;
       case "colorBotonConfig":
         return colorBotonConfig;
@@ -68,6 +73,9 @@ class ParametrosProvider with ChangeNotifier {
       case "colorBotonConfig":
         setcolorBotonConfig(parametro);
         break;
+      case "colorBotonCreditos":
+        setcolorBotonCreditos(parametro);
+        break;
       case "colorBotonSalir":
         setcolorBotonSalir(parametro);
         break;
@@ -100,6 +108,11 @@ class ParametrosProvider with ChangeNotifier {
 
   void setcolorBotonConfig(Parametro colorBotonConfig) {
     this._colorBotonConfig = colorBotonConfig;
+    notifyListeners();
+  }
+
+  void setcolorBotonCreditos(Parametro colorBotonCreditos) {
+    this._colorBotonCreditos = colorBotonCreditos;
     notifyListeners();
   }
 

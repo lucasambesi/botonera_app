@@ -13,6 +13,10 @@ class DataDB {
         "valor": ColorParser.color(Colors.yellow[300]).toHex(),
       },
       {
+        "clave": "colorBotonCreditos",
+        "valor": ColorParser.color(Colors.yellow[300]).toHex(),
+      },
+      {
         "clave": "colorBotonSalir",
         "valor": ColorParser.color(Colors.yellow[300]).toHex(),
       },

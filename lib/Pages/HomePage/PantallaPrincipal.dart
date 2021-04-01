@@ -1,4 +1,5 @@
 import 'package:botonera_app/Pages/HomePage/Botones/BotonConfiguracion.dart';
+import 'package:botonera_app/Pages/HomePage/Botones/BotonCreditos.dart';
 import 'package:botonera_app/Pages/HomePage/Botones/BotonSalir.dart';
 import 'package:botonera_app/Pages/HomePage/Botones/BotonSonidos.dart';
 import 'package:botonera_app/Pages/HomePage/LogoHome.dart';
@@ -40,11 +41,15 @@ class MenuPrincipal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        SizedBox(height: 50),
         FlexibleLogoHome(),
+        SizedBox(height: 50),
         FlexibleSonidos(),
-        SizedBox(height: 30),
+        SizedBox(height: 50),
         FlexibleConfiguracion(),
-        SizedBox(height: 30),
+        SizedBox(height: 50),
+        FlexibleCreditos(),
+        SizedBox(height: 50),
         FlexibleSalir(),
       ],
     );

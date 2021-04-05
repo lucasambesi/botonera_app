@@ -1,6 +1,9 @@
 import 'package:audioplayers/audio_cache.dart';
+import 'package:botonera_app/Helpers/Helpers.dart';
+import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BotonAudio extends StatefulWidget {
   final AudioCache audioCache;
@@ -46,6 +49,7 @@ class BotonAudioImpl extends State<BotonAudio> {
 
   @override
   Widget build(BuildContext context) {
+    final paramsProvider = Provider.of<ParametrosProvider>(context);
     return RawMaterialButton(
       onPressed: () {
         if (tipoReproducir)
@@ -60,12 +64,12 @@ class BotonAudioImpl extends State<BotonAudio> {
       },
       child: Icon(
         (tipoReproducir) ? Icons.play_arrow : Icons.stop,
-        color: Colors.white,
+        color: Helpers.getColorByParam(paramsProvider.colorFondoAudio),
         size: 30,
       ),
       shape: CircleBorder(),
       elevation: 2.0,
-      fillColor: Colors.yellow[300],
+      fillColor: Helpers.getColorByParam(paramsProvider.colorBotonAudio),
       padding: const EdgeInsets.all(15.0),
     );
   }

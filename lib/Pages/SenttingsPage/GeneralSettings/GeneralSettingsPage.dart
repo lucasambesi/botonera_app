@@ -1,4 +1,3 @@
-import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/BarraColores.dart';
 import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/BotonesMenuPrincipal.dart';
 import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/ConfiguracionCard.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,25 +14,28 @@ class PantallaGeneralSettingsImpl extends State<PantallaGeneralSettings> {
       decoration: BoxDecoration(
         color: Colors.white,
       ),
-      child: GridView.count(crossAxisCount: (2), children: <Widget>[
-        BotonesMenuPrincipal(),
-        ConfiguracionCard(
-          nombreTitulo: 'Color fondo Sonidos',
-          nombreParametro: 'colorFondoSonidos',
-        ),
-        ConfiguracionCard(
-          nombreTitulo: 'Color fondo Menu Principal',
-          nombreParametro: 'colorFondoMenu',
-        ),
-        ConfiguracionCard(
-          nombreTitulo: 'Color barra Superior',
-          nombreParametro: 'colorBarraSuperior',
-        ),
-        ConfiguracionCard(
-          nombreTitulo: 'Color barra Inferior',
-          nombreParametro: 'colorBarraInferior',
-        ),
-      ]),
+      child: GridView.count(
+        crossAxisCount: (2),
+        children: <Widget>[
+          BotonesMenuPrincipal(),
+          ConfiguracionCard(
+            nombreTitulo: 'Color fondo Sonidos',
+            nombreParametro: 'colorFondoSonidos',
+          ),
+          ConfiguracionCard(
+            nombreTitulo: 'Color fondo Menu Principal',
+            nombreParametro: 'colorFondoMenu',
+          ),
+          ConfiguracionCard(
+            nombreTitulo: 'Color barra Superior',
+            nombreParametro: 'colorBarraSuperior',
+          ),
+          ConfiguracionCard(
+            nombreTitulo: 'Color barra Inferior',
+            nombreParametro: 'colorBarraInferior',
+          ),
+        ],
+      ),
     );
   }
 }

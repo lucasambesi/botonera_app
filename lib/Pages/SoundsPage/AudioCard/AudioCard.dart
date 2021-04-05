@@ -1,10 +1,14 @@
+import 'package:botonera_app/Helpers/Helpers.dart';
 import 'package:botonera_app/Pages/SoundsPage/AudioCard/BotonAudio.dart';
 import 'package:botonera_app/models/Audio.dart';
 import 'package:botonera_app/Pages/SoundsPage/AudioCard/IconosInferiores.dart';
+import 'package:botonera_app/models/Parametro.dart';
+import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:provider/provider.dart';
 
 class AudioCard extends StatefulWidget {
   final Audio audio;
@@ -29,21 +33,23 @@ class AudioCardImpl extends State<AudioCard> {
 
   @override
   Widget build(BuildContext context) {
+    final paramsProvider = Provider.of<ParametrosProvider>(context);
     return Card(
+      color: Helpers.getColorByParam(paramsProvider.colorFondoAudio),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
-            children: cardImpl,
+            children: cardImpl(paramsProvider.colorFondoAudio),
           ),
         ),
       ),
     );
   }
 
-  List<Widget> get cardImpl {
+  List<Widget> cardImpl(Parametro parametro) {
     return <Widget>[
       Flexible(
         flex: 3,
@@ -51,12 +57,13 @@ class AudioCardImpl extends State<AudioCard> {
         child: Text(
           (audio.nombre.length <= 27) ? audio.nombre : cortarAudioNombre(),
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
+          style: TextStyle(
+              fontSize: 15, color: Helpers.getColorConstrastByParam(parametro)),
         ),
       ),
       Flexible(
         flex: 4,
-        fit: FlexFit.loose,
+        fit: FlexFit.tight,
         child: BotonAudio(
           audioCache: audioCache,
           nombreAudio: audio.nombre,

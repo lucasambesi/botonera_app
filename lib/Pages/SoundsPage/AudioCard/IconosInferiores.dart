@@ -1,9 +1,13 @@
+import 'package:botonera_app/Helpers/Helpers.dart';
+import 'package:botonera_app/Pages/SoundsPage/AudioCard/IconoFavorito.dart';
 import 'package:botonera_app/db/DAOs/AudioDAO.dart';
 import 'package:botonera_app/models/Audio.dart';
+import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class IconosInferiores extends StatefulWidget {
   final Audio audio;
@@ -27,22 +31,29 @@ class IconosInferioresImpl extends State<IconosInferiores> {
 
   @override
   Widget build(BuildContext context) {
+    final paramsProvider = Provider.of<ParametrosProvider>(context);
+    Color colorIconos =
+        Helpers.getColorByParam(paramsProvider.colorIconosAudio);
     return ButtonBar(
       alignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        iconoInformacion(context),
-        iconoFavorito(),
-        iconoCompartir(),
+        iconoInformacion(context, colorIconos),
+        IconoFavorito(
+          sizeIcons: sizeIcons,
+          audio: audio,
+        ),
+        iconoCompartir(colorIconos),
       ],
     );
   }
 
-  IconButton iconoInformacion(BuildContext context) {
+  IconButton iconoInformacion(BuildContext context, Color color) {
     return IconButton(
       icon: Icon(
         Icons.info_outline,
         size: sizeIcons,
+        color: color,
       ),
       tooltip: 'Información',
       onPressed: () {
@@ -110,7 +121,7 @@ class IconosInferioresImpl extends State<IconosInferiores> {
     );
   }
 
-  IconButton iconoFavorito() {
+  IconButton iconoFavorito(Color color) {
     return IconButton(
       icon: Icon(
         Icons.star,
@@ -124,23 +135,23 @@ class IconosInferioresImpl extends State<IconosInferiores> {
             if (_color == Colors.black) {
               _color = Colors.yellow;
               audio.favorito = true;
-              AudioDAO.updateAudio(audio);
             } else {
               _color = Colors.black;
               audio.favorito = false;
-              AudioDAO.updateAudio(audio);
             }
+            AudioDAO.updateAudio(audio);
           },
         );
       },
     );
   }
 
-  IconButton iconoCompartir() {
+  IconButton iconoCompartir(Color color) {
     return IconButton(
       icon: Icon(
         Icons.share,
         size: sizeIcons,
+        color: color,
       ),
       tooltip: 'Compartir',
       onPressed: () async {

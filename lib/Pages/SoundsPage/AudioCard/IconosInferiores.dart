@@ -2,6 +2,7 @@ import 'package:botonera_app/Helpers/Helpers.dart';
 import 'package:botonera_app/Pages/SoundsPage/AudioCard/IconoFavorito.dart';
 import 'package:botonera_app/db/DAOs/AudioDAO.dart';
 import 'package:botonera_app/models/Audio.dart';
+import 'package:botonera_app/models/Parametro.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,8 @@ class _IconosInferioresState extends State<IconosInferiores> {
       alignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        iconoInformacion(context, colorIconos),
+        iconoInformacion(
+            context, paramsProvider.colorFondoInfoAudio, colorIconos),
         IconoFavorito(
           sizeIcons: sizeIcons,
           audio: audio,
@@ -48,7 +50,8 @@ class _IconosInferioresState extends State<IconosInferiores> {
     );
   }
 
-  IconButton iconoInformacion(BuildContext context, Color color) {
+  IconButton iconoInformacion(
+      BuildContext context, Parametro colorFondoInfoAudio, Color color) {
     return IconButton(
       icon: Icon(
         Icons.info_outline,
@@ -61,9 +64,13 @@ class _IconosInferioresState extends State<IconosInferiores> {
           barrierDismissible: true,
           context: context,
           builder: (context) => AlertDialog(
+            backgroundColor: Helpers.getColorByParam(colorFondoInfoAudio),
             title: Text(
               'Información del audio',
               textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Helpers.getColorConstrastByParam(colorFondoInfoAudio),
+              ),
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -76,6 +83,10 @@ class _IconosInferioresState extends State<IconosInferiores> {
                 Text(
                   'Nombre:  "' + audio.nombre + '".',
                   textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color:
+                        Helpers.getColorConstrastByParam(colorFondoInfoAudio),
+                  ),
                 ),
                 SizedBox(
                   height: 12,
@@ -83,6 +94,10 @@ class _IconosInferioresState extends State<IconosInferiores> {
                 Text(
                   'Categoría:  "' + audio.categoria.nombre + '".',
                   textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color:
+                        Helpers.getColorConstrastByParam(colorFondoInfoAudio),
+                  ),
                 ),
                 SizedBox(
                   height: 12,
@@ -92,6 +107,10 @@ class _IconosInferioresState extends State<IconosInferiores> {
                     Text(
                       'En Favoritos: ',
                       textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Helpers.getColorConstrastByParam(
+                            colorFondoInfoAudio),
+                      ),
                     ),
                     Icon(
                       (audio.favorito ? Icons.check : Icons.close),
@@ -105,6 +124,10 @@ class _IconosInferioresState extends State<IconosInferiores> {
               FlatButton(
                 child: Text(
                   'Cerrar',
+                  style: TextStyle(
+                    color:
+                        Helpers.getColorConstrastByParam(colorFondoInfoAudio),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.of(context).pop();

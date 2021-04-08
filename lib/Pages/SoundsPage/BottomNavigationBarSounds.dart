@@ -9,10 +9,10 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 
 class BarraNavegacion extends StatefulWidget {
-  State<StatefulWidget> createState() => BarraNavegacionImpl();
+  State<StatefulWidget> createState() => _BarraNavegacionState();
 }
 
-class BarraNavegacionImpl extends State<BarraNavegacion> {
+class _BarraNavegacionState extends State<BarraNavegacion> {
   int _currentIndex = 1;
 
   final List<Widget> _children = [

@@ -14,17 +14,17 @@ class BotonConfigColor extends StatefulWidget {
     @required this.parametro,
   });
 
-  State<StatefulWidget> createState() => BotonConfigColorImpl(
+  State<StatefulWidget> createState() => _BotonConfigColorState(
         parametro: parametro,
       );
 }
 
-class BotonConfigColorImpl extends State<BotonConfigColor> {
+class _BotonConfigColorState extends State<BotonConfigColor> {
   Color currentColor;
   Color pickedColor;
   Parametro parametro;
 
-  BotonConfigColorImpl({
+  _BotonConfigColorState({
     @required this.parametro,
   });
 

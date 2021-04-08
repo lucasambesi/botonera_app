@@ -9,13 +9,13 @@ class CategoriaAudiosPage extends StatefulWidget {
   CategoriaAudiosPage({@required this.categoria});
 
   State<StatefulWidget> createState() =>
-      CategoriaAudiosPageImpl(categoria: categoria);
+      _CategoriaAudiosPageState(categoria: categoria);
 }
 
-class CategoriaAudiosPageImpl extends State<CategoriaAudiosPage> {
+class _CategoriaAudiosPageState extends State<CategoriaAudiosPage> {
   final Categoria categoria;
 
-  CategoriaAudiosPageImpl({@required this.categoria});
+  _CategoriaAudiosPageState({@required this.categoria});
 
   @override
   Widget build(BuildContext context) {

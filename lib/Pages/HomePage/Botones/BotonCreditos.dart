@@ -5,14 +5,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FlexibleCreditos extends StatefulWidget {
-  FlexibleCreditos({Key key}) : super(key: key);
+class BotonCreditos extends StatefulWidget {
+  BotonCreditos({Key key}) : super(key: key);
 
   @override
-  FlexibleCreditosImpl createState() => FlexibleCreditosImpl();
+  _BotonCreditosState createState() => _BotonCreditosState();
 }
 
-class FlexibleCreditosImpl extends State<FlexibleCreditos> {
+class _BotonCreditosState extends State<BotonCreditos> {
   @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);

@@ -14,15 +14,15 @@ class CategoriaCardMuestra extends StatefulWidget {
   const CategoriaCardMuestra({@required this.parametro});
 
   State<StatefulWidget> createState() =>
-      CategoriaCardMuestraImpl(parametro: parametro);
+      _CategoriaCardMuestraState(parametro: parametro);
 }
 
-class CategoriaCardMuestraImpl extends State<CategoriaCardMuestra> {
+class _CategoriaCardMuestraState extends State<CategoriaCardMuestra> {
   Color currentColor;
   Color pickedColor;
   Parametro parametro;
 
-  CategoriaCardMuestraImpl({
+  _CategoriaCardMuestraState({
     @required this.parametro,
   });
 

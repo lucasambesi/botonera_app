@@ -5,14 +5,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FlexibleSonidos extends StatefulWidget {
-  FlexibleSonidos({Key key}) : super(key: key);
+class BotonSonidos extends StatefulWidget {
+  BotonSonidos({Key key}) : super(key: key);
 
   @override
-  FlexibleSonidosImpl createState() => FlexibleSonidosImpl();
+  _BotonSonidosState createState() => _BotonSonidosState();
 }
 
-class FlexibleSonidosImpl extends State<FlexibleSonidos> {
+class _BotonSonidosState extends State<BotonSonidos> {
   @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);

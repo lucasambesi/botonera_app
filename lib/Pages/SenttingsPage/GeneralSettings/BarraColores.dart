@@ -10,15 +10,15 @@ class BarraColores extends StatefulWidget {
   final String nombreParametro;
   BarraColores({@required this.nombreParametro});
   State<StatefulWidget> createState() =>
-      BarraColoresImpl(nombreParametro: nombreParametro);
+      _BarraColoresState(nombreParametro: nombreParametro);
 }
 
-class BarraColoresImpl extends State<BarraColores> {
+class _BarraColoresState extends State<BarraColores> {
   List<SelectedWidget> isSelected;
   List<Parametro> parametros;
   Parametro parametro;
   final String nombreParametro;
-  BarraColoresImpl({@required this.nombreParametro});
+  _BarraColoresState({@required this.nombreParametro});
   @override
   void initState() {
     super.initState();

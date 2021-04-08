@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PantallaExplorarSonidos extends StatefulWidget {
-  State<StatefulWidget> createState() => PantallaExplorarImpl();
+  State<StatefulWidget> createState() => _PantallaExplorarState();
 }
 
-class PantallaExplorarImpl extends State<PantallaExplorarSonidos> {
+class _PantallaExplorarState extends State<PantallaExplorarSonidos> {
   @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);

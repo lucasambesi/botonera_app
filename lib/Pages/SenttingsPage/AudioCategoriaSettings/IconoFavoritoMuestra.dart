@@ -6,16 +6,16 @@ import 'package:provider/provider.dart';
 
 class IconoFavoritoMuestra extends StatefulWidget {
   const IconoFavoritoMuestra();
-  State<StatefulWidget> createState() => IconoFavoritoMuestraState();
+  State<StatefulWidget> createState() => _IconoFavoritoMuestraState();
 }
 
-class IconoFavoritoMuestraState extends State<IconoFavoritoMuestra> {
+class _IconoFavoritoMuestraState extends State<IconoFavoritoMuestra> {
   ParametrosProvider parametrosProvider;
   Color _color;
   Color enFavoritos;
   Color noFavoritos;
 
-  IconoFavoritoMuestraState();
+  _IconoFavoritoMuestraState();
 
   @override
   void initState() {

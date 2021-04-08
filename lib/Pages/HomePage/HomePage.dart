@@ -10,10 +10,10 @@ class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
 
   @override
-  HomePageImpl createState() => HomePageImpl();
+  _HomePageState createState() => _HomePageState();
 }
 
-class HomePageImpl extends State<HomePage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

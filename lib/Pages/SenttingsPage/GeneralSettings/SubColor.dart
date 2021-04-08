@@ -6,14 +6,14 @@ class SubColor extends StatefulWidget {
 
   SubColor({@required this.color});
 
-  State<StatefulWidget> createState() => SubColorImpl(color: color);
+  State<StatefulWidget> createState() => _SubColorState(color: color);
 }
 
-class SubColorImpl extends State<SubColor> {
+class _SubColorState extends State<SubColor> {
   final Color color;
   List<bool> isSelected;
 
-  SubColorImpl({@required this.color});
+  _SubColorState({@required this.color});
 
   Widget build(BuildContext context) {
     return Container(

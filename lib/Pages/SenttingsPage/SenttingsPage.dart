@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PantallaConfiguracion extends StatefulWidget {
-  State<StatefulWidget> createState() => PantallaConfiguracionImpl();
+  State<StatefulWidget> createState() => _PantallaConfiguracionState();
 }
 
-class PantallaConfiguracionImpl extends State<PantallaConfiguracion> {
+class _PantallaConfiguracionState extends State<PantallaConfiguracion> {
   final _tabPages = <Widget>[
     PantallaGeneralSettings(),
-    PantallaAudioCategoriaSettings(),
+    AudioCategoriaSettings(),
   ];
 
   final _tabs = <Tab>[

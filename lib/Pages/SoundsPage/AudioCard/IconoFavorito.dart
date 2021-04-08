@@ -14,13 +14,13 @@ class IconoFavorito extends StatefulWidget {
     @required this.sizeIcons,
   });
 
-  State<StatefulWidget> createState() => IconoFavoritoImpl(
+  State<StatefulWidget> createState() => _IconoFavoritoState(
         audio: audio,
         sizeIcons: sizeIcons,
       );
 }
 
-class IconoFavoritoImpl extends State<IconoFavorito> {
+class _IconoFavoritoState extends State<IconoFavorito> {
   final Audio audio;
   ParametrosProvider parametrosProvider;
   double sizeIcons;
@@ -28,7 +28,7 @@ class IconoFavoritoImpl extends State<IconoFavorito> {
   Color enFavoritos;
   Color noFavoritos;
 
-  IconoFavoritoImpl({
+  _IconoFavoritoState({
     @required this.audio,
     @required this.sizeIcons,
   });

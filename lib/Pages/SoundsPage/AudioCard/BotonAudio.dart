@@ -10,7 +10,7 @@ class BotonAudio extends StatefulWidget {
   final String nombreAudio;
   final bool tipoReproducir;
 
-  State<StatefulWidget> createState() => BotonAudioImpl(
+  State<StatefulWidget> createState() => _BotonAudioState(
         audioCache: audioCache,
         nombreAudio: nombreAudio,
         tipoReproducir: tipoReproducir,
@@ -23,12 +23,12 @@ class BotonAudio extends StatefulWidget {
   });
 }
 
-class BotonAudioImpl extends State<BotonAudio> {
+class _BotonAudioState extends State<BotonAudio> {
   final AudioCache audioCache;
   final String nombreAudio;
   bool tipoReproducir;
 
-  BotonAudioImpl({
+  _BotonAudioState({
     @required this.audioCache,
     @required this.nombreAudio,
     @required this.tipoReproducir,

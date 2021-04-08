@@ -13,14 +13,14 @@ class IconosInferiores extends StatefulWidget {
   final Audio audio;
   IconosInferiores({@required this.audio});
 
-  State<StatefulWidget> createState() => IconosInferioresImpl(audio: audio);
+  State<StatefulWidget> createState() => _IconosInferioresState(audio: audio);
 }
 
-class IconosInferioresImpl extends State<IconosInferiores> {
+class _IconosInferioresState extends State<IconosInferiores> {
   final Audio audio;
   Color _color;
   double sizeIcons;
-  IconosInferioresImpl({@required this.audio});
+  _IconosInferioresState({@required this.audio});
 
   @override
   void initState() {

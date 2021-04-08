@@ -13,10 +13,10 @@ class PantallaPrincipal extends StatefulWidget {
   PantallaPrincipal({Key key}) : super(key: key);
 
   @override
-  PantallaPrincipalImpl createState() => PantallaPrincipalImpl();
+  _PantallaPrincipalState createState() => _PantallaPrincipalState();
 }
 
-class PantallaPrincipalImpl extends State<PantallaPrincipal> {
+class _PantallaPrincipalState extends State<PantallaPrincipal> {
   @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);
@@ -42,15 +42,15 @@ class MenuPrincipal extends StatelessWidget {
     return Column(
       children: <Widget>[
         SizedBox(height: 50),
-        FlexibleLogoHome(),
+        LogoHome(),
         SizedBox(height: 50),
-        FlexibleSonidos(),
+        BotonSonidos(),
         SizedBox(height: 50),
-        FlexibleConfiguracion(),
+        BotonConfiguracion(),
         SizedBox(height: 50),
-        FlexibleCreditos(),
+        BotonCreditos(),
         SizedBox(height: 50),
-        FlexibleSalir(),
+        BotonSalir(),
       ],
     );
   }

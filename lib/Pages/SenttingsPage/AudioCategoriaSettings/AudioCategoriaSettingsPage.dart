@@ -1,18 +1,17 @@
-import 'dart:ui' as ui;
 import 'package:botonera_app/Pages/SenttingsPage/AudioCategoriaSettings/AudioCardMuestra.dart';
 import 'package:botonera_app/Pages/SenttingsPage/AudioCategoriaSettings/CategoriaCardMuestra.dart';
+import 'package:botonera_app/Pages/SenttingsPage/AudioCategoriaSettings/TituloSettings.dart';
 import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/ConfiguracionCard.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PantallaAudioCategoriaSettings extends StatefulWidget {
-  State<StatefulWidget> createState() => PantallaAudioCategoriaSettingsImpl();
+class AudioCategoriaSettings extends StatefulWidget {
+  State<StatefulWidget> createState() => _AudioCategoriaSettingsState();
 }
 
-class PantallaAudioCategoriaSettingsImpl
-    extends State<PantallaAudioCategoriaSettings> {
+class _AudioCategoriaSettingsState extends State<AudioCategoriaSettings> {
   @override
   Widget build(BuildContext context) {
     var paramsProvider = Provider.of<ParametrosProvider>(
@@ -103,33 +102,6 @@ class PantallaAudioCategoriaSettingsImpl
           ],
         ),
       ),
-    );
-  }
-}
-
-class TituloSetting extends StatelessWidget {
-  final String titulo;
-
-  const TituloSetting({
-    @required this.titulo,
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      titulo,
-      style: TextStyle(
-          fontSize: 35,
-          foreground: Paint()
-            ..shader = ui.Gradient.linear(
-              const Offset(0, 150),
-              const Offset(230, 0),
-              <Color>[
-                Colors.red,
-                Colors.yellow,
-              ],
-            )),
     );
   }
 }

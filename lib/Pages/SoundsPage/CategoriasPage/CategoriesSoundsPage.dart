@@ -6,10 +6,10 @@ import 'package:botonera_app/Pages/SoundsPage/CategoriasPage/FBCategoriasCards.d
 import 'package:provider/provider.dart';
 
 class PantallaCategorias extends StatefulWidget {
-  State<StatefulWidget> createState() => PantallaCategoriasImpl();
+  State<StatefulWidget> createState() => _PantallaCategoriasState();
 }
 
-class PantallaCategoriasImpl extends State<PantallaCategorias> {
+class _PantallaCategoriasState extends State<PantallaCategorias> {
   @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);

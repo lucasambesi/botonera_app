@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class FlexibleLogoHome extends StatelessWidget {
-  const FlexibleLogoHome({
+class LogoHome extends StatelessWidget {
+  const LogoHome({
     Key key,
   }) : super(key: key);
 

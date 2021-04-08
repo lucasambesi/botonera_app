@@ -4,10 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PantallaGeneralSettings extends StatefulWidget {
-  State<StatefulWidget> createState() => PantallaGeneralSettingsImpl();
+  State<StatefulWidget> createState() => _PantallaGeneralSettingsState();
 }
 
-class PantallaGeneralSettingsImpl extends State<PantallaGeneralSettings> {
+class _PantallaGeneralSettingsState extends State<PantallaGeneralSettings> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +17,7 @@ class PantallaGeneralSettingsImpl extends State<PantallaGeneralSettings> {
       child: GridView.count(
         crossAxisCount: (2),
         children: <Widget>[
-          BotonesMenuPrincipal(),
+          BotonesMenuMuestra(),
           ConfiguracionCard(
             nombreTitulo: 'Color fondo Sonidos',
             nombreParametro: 'colorFondoSonidos',

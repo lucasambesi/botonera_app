@@ -8,11 +8,11 @@ import 'package:botonera_app/models/Categoria.dart';
 class FBCategoriaCards extends StatefulWidget {
   FBCategoriaCards();
 
-  State<StatefulWidget> createState() => FBCategoriaCardsImpl();
+  State<StatefulWidget> createState() => _FBCategoriaCardsState();
 }
 
-class FBCategoriaCardsImpl extends State<FBCategoriaCards> {
-  FBCategoriaCardsImpl();
+class _FBCategoriaCardsState extends State<FBCategoriaCards> {
+  _FBCategoriaCardsState();
 
   @override
   Widget build(BuildContext context) {
@@ -64,16 +64,16 @@ class FBCategoriaCardsImpl extends State<FBCategoriaCards> {
         child: CircularProgressIndicator(),
       );
     }
-    return CategoriasListView(
+    return _CategoriasListView(
       categorias: snapshot.data,
     );
   }
 }
 
-class CategoriasListView extends StatelessWidget {
+class _CategoriasListView extends StatelessWidget {
   final List<Widget> categorias;
 
-  const CategoriasListView({
+  const _CategoriasListView({
     Key key,
     @required this.categorias,
   }) : super(key: key);

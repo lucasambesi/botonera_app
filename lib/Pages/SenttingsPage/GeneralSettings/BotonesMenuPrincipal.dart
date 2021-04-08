@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BotonesMenuPrincipal extends StatefulWidget {
-  BotonesMenuPrincipal();
-  State<StatefulWidget> createState() => BotonesMenuPrincipalImpl();
+class BotonesMenuMuestra extends StatefulWidget {
+  BotonesMenuMuestra();
+  State<StatefulWidget> createState() => _BotonesMenuMuestraState();
 }
 
-class BotonesMenuPrincipalImpl extends State<BotonesMenuPrincipal> {
+class _BotonesMenuMuestraState extends State<BotonesMenuMuestra> {
   @override
   void initState() {
     super.initState();

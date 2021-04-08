@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PantallaFavoritos extends StatefulWidget {
-  State<StatefulWidget> createState() => PantallaFavoritosImpl();
+  State<StatefulWidget> createState() => _PantallaFavoritosState();
 }
 
-class PantallaFavoritosImpl extends State<PantallaFavoritos> {
+class _PantallaFavoritosState extends State<PantallaFavoritos> {
   @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);

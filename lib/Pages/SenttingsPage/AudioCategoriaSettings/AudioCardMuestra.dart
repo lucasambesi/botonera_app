@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AudioCardMuestra extends StatefulWidget {
-  State<StatefulWidget> createState() => AudioCardMuestraImpl();
+  State<StatefulWidget> createState() => _AudioCardMuestraState();
 }
 
-class AudioCardMuestraImpl extends State<AudioCardMuestra> {
+class _AudioCardMuestraState extends State<AudioCardMuestra> {
   bool tipoReproducir;
 
   @override

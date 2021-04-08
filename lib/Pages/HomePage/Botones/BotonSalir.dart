@@ -6,14 +6,14 @@ import 'package:provider/provider.dart';
 import 'dart:io' show Platform, exit;
 import 'package:flutter/services.dart';
 
-class FlexibleSalir extends StatefulWidget {
-  FlexibleSalir({Key key}) : super(key: key);
+class BotonSalir extends StatefulWidget {
+  BotonSalir({Key key}) : super(key: key);
 
   @override
-  FlexibleSalirImpl createState() => FlexibleSalirImpl();
+  _BotonSalirState createState() => _BotonSalirState();
 }
 
-class FlexibleSalirImpl extends State<FlexibleSalir> {
+class _BotonSalirState extends State<BotonSalir> {
   @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);

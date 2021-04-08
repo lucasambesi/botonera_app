@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class CretidosAlert extends StatefulWidget {
-  State<StatefulWidget> createState() => CretidosAlertImpl();
+  State<StatefulWidget> createState() => _CretidosAlertState();
 }
 
-class CretidosAlertImpl extends State<CretidosAlert> {
+class _CretidosAlertState extends State<CretidosAlert> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

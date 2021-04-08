@@ -13,19 +13,19 @@ class ConfigBotonMenu extends StatefulWidget {
   final Parametro parametro;
   ConfigBotonMenu({@required this.nombreBoton, @required this.parametro});
 
-  State<StatefulWidget> createState() => ConfigBotonMenuImpl(
+  State<StatefulWidget> createState() => _ConfigBotonMenuState(
         nombreBoton: nombreBoton,
         parametro: parametro,
       );
 }
 
-class ConfigBotonMenuImpl extends State<ConfigBotonMenu> {
+class _ConfigBotonMenuState extends State<ConfigBotonMenu> {
   final String nombreBoton;
   Parametro parametro;
   Color currentColor;
   Color pickedColor;
 
-  ConfigBotonMenuImpl({
+  _ConfigBotonMenuState({
     @required this.nombreBoton,
     @required this.parametro,
   });

@@ -10,13 +10,13 @@ class CategoriaCard extends StatefulWidget {
   CategoriaCard({@required this.categoria});
 
   State<StatefulWidget> createState() =>
-      CategoriaCardImpl(categoria: categoria);
+      _CategoriaCardState(categoria: categoria);
 }
 
-class CategoriaCardImpl extends State<CategoriaCard> {
+class _CategoriaCardState extends State<CategoriaCard> {
   final Categoria categoria;
 
-  CategoriaCardImpl({@required this.categoria});
+  _CategoriaCardState({@required this.categoria});
 
   @override
   Widget build(BuildContext context) {

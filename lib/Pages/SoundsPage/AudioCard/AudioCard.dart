@@ -14,14 +14,14 @@ class AudioCard extends StatefulWidget {
   final Audio audio;
   AudioCard({@required this.audio});
 
-  State<StatefulWidget> createState() => AudioCardImpl(audio: audio);
+  State<StatefulWidget> createState() => _AudioCardState(audio: audio);
 }
 
-class AudioCardImpl extends State<AudioCard> {
+class _AudioCardState extends State<AudioCard> {
   final Audio audio;
   AudioPlayer audioPlayer;
   AudioCache audioCache;
-  AudioCardImpl({@required this.audio});
+  _AudioCardState({@required this.audio});
 
   @override
   void initState() {

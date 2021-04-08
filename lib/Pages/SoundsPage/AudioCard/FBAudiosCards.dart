@@ -12,16 +12,16 @@ class FutureBuilderCards extends StatefulWidget {
   FutureBuilderCards(
       {@required this.callback, this.categoria, this.desordenar = false});
 
-  State<StatefulWidget> createState() => FutureBuilderCardsImpl(
+  State<StatefulWidget> createState() => _FutureBuilderCardsState(
       callback: callback, categoria: categoria, desordenar: desordenar);
 }
 
-class FutureBuilderCardsImpl extends State<FutureBuilderCards> {
+class _FutureBuilderCardsState extends State<FutureBuilderCards> {
   Function callback;
   final Categoria categoria;
   final bool desordenar;
 
-  FutureBuilderCardsImpl(
+  _FutureBuilderCardsState(
       {@required this.callback, this.categoria, this.desordenar});
 
   @override

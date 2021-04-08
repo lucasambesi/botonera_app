@@ -13,7 +13,7 @@ class BarraNavegacion extends StatefulWidget {
 }
 
 class _BarraNavegacionState extends State<BarraNavegacion> {
-  int _currentIndex = 1;
+  int _currentIndex = 0;
 
   final List<Widget> _children = [
     PantallaExplorarSonidos(),

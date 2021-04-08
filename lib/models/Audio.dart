@@ -25,9 +25,11 @@ class Audio {
   int get id => _id;
   String get nombre => _nombre;
   Categoria get categoria => _categoria;
-  bool get favorito => _favorito;
   String get imagen => _imagen;
+  // ignore: unnecessary_getters_setters
+  bool get favorito => _favorito;
 
+  // ignore: unnecessary_getters_setters
   set favorito(bool favorito) => _favorito = favorito;
 
   Map<String, dynamic> toMap() {

@@ -18,6 +18,7 @@ var parametros = DataDB.getParametros();
 //#endregion
 
 class OperationsDB {
+  // ignore: missing_return
   static Future<Database> openDB() async {
     try {
       Database db = await openDatabase(

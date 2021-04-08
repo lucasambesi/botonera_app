@@ -20,7 +20,7 @@ class _AudioCategoriaSettingsState extends State<AudioCategoriaSettings> {
     );
     return SingleChildScrollView(
       child: SizedBox(
-        height: 900,
+        height: MediaQuery.of(context).size.height - 150,
         width: MediaQuery.of(context).size.height - 150,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -48,8 +48,20 @@ class _AudioCategoriaSettingsState extends State<AudioCategoriaSettings> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  Expanded(
+                    child: ConfiguracionCard(
+                      nombreTitulo: 'Color boton Audio',
+                      nombreParametro: 'colorBotonAudio',
+                    ),
+                  ),
                   Container(
                     child: AudioCardMuestra(),
+                  ),
+                  Expanded(
+                    child: ConfiguracionCard(
+                      nombreTitulo: 'Color fondo Audio',
+                      nombreParametro: 'colorFondoAudio',
+                    ),
                   ),
                 ],
               ),
@@ -68,25 +80,6 @@ class _AudioCategoriaSettingsState extends State<AudioCategoriaSettings> {
                     child: ConfiguracionCard(
                       nombreTitulo: 'Color en Favoritos',
                       nombreParametro: 'colorEnFavoritos',
-                    ),
-                  ),
-                  Expanded(
-                    child: ConfiguracionCard(
-                      nombreTitulo: 'Color fondo Audio',
-                      nombreParametro: 'colorFondoAudio',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Expanded(
-                    child: ConfiguracionCard(
-                      nombreTitulo: 'Color boton Audio',
-                      nombreParametro: 'colorBotonAudio',
                     ),
                   ),
                   Expanded(

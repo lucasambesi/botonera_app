@@ -22,6 +22,7 @@ class _CretidosAlertState extends State<CretidosAlert> {
           Text(
             'Desarrollado por LCS Studio.',
             textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
           Text(
@@ -30,8 +31,14 @@ class _CretidosAlertState extends State<CretidosAlert> {
           ),
           SizedBox(height: 15),
           Text(
-            'Antes cualquier duda o problema comunicarse con lcsstudio@gmail.com',
+            'Antes cualquier duda o problema comunicarse con:',
             textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 15),
+          Text(
+            'lcsstudio@gmail.com',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20, color: Colors.yellow[300]),
           ),
         ],
       ),

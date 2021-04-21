@@ -48,6 +48,12 @@ class _BotonAudioState extends State<BotonAudio> {
   }
 
   @override
+  void dispose() {
+    audioCache.fixedPlayer.stop();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);
     return RawMaterialButton(

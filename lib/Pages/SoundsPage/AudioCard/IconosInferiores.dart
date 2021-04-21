@@ -179,13 +179,12 @@ class _IconosInferioresState extends State<IconosInferiores> {
       tooltip: 'Compartir',
       onPressed: () async {
         String nombreAudio = audio.nombre;
-        // final ByteData bytes =
-        //     await rootBundle.load('assets/audios/$nombreAudio.mp3');
 
         final ByteData bytes =
-            await rootBundle.load('assets/images/logo_home.png');
-        Share.file(
-            nombreAudio, nombreAudio, bytes.buffer.asInt8List(), 'image/jpg');
+            await rootBundle.load('assets/audios/$nombreAudio.mp3');
+
+        await Share.file(nombreAudio, '$nombreAudio.mp3',
+            bytes.buffer.asInt8List(), 'audio/mp3');
       },
     );
   }

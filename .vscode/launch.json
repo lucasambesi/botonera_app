@@ -6,7 +6,7 @@
     "configurations": [
         
         {
-            "name": "botonera_app",
+            "name": "Botonera App",
             "request": "launch",
             "type": "dart"
         }

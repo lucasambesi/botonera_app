@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:botonera_app/Pages/HomePage/HomePage.dart';
 import 'package:flutter/services.dart';
+import 'package:admob_flutter/admob_flutter.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -9,7 +10,8 @@ void main() {
       statusBarBrightness: Brightness.light,
     ),
   );
-
+  WidgetsFlutterBinding.ensureInitialized();
+  Admob.initialize(testDeviceIds: ['com.example.botonera_app']);
   runApp(MyApp());
 }
 

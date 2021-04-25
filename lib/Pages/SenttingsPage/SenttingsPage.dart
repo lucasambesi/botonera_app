@@ -1,4 +1,5 @@
 import 'package:botonera_app/Helpers/Helpers.dart';
+import 'package:botonera_app/Pages/Anuncios/AdMobBanner.dart';
 import 'package:botonera_app/Pages/SenttingsPage/AudioCategoriaSettings/AudioCategoriaSettingsPage.dart';
 import 'package:botonera_app/Pages/SenttingsPage/GeneralSettings/GeneralSettingsPage.dart';
 import 'package:botonera_app/models/ParametrosProvider.dart';
@@ -60,6 +61,9 @@ class _PantallaConfiguracionState extends State<PantallaConfiguracion> {
             children: _tabPages,
           ),
           padding: EdgeInsets.only(top: 8.0),
+        ),
+        bottomNavigationBar: AdMobBanner(
+          parametro: paramsProvider.colorFondoConfig.clave,
         ),
       ),
     );

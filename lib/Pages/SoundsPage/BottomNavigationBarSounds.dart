@@ -1,4 +1,6 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:botonera_app/Helpers/Helpers.dart';
+import 'package:botonera_app/Pages/Anuncios/AdMobBanner.dart';
 import 'package:botonera_app/Pages/SoundsPage/CategoriasPage/CategoriesSoundsPage.dart';
 import 'package:botonera_app/Pages/SoundsPage/ExplorarPage/ExploreSoundsPage.dart';
 import 'package:botonera_app/Pages/SoundsPage/FavoritosPage/FavoriteSoundsPage.dart';
@@ -14,6 +16,7 @@ class BarraNavegacion extends StatefulWidget {
 
 class _BarraNavegacionState extends State<BarraNavegacion> {
   int _currentIndex = 0;
+  AdmobReward admobReward;
 
   final List<Widget> _children = [
     PantallaExplorarSonidos(),
@@ -22,13 +25,31 @@ class _BarraNavegacionState extends State<BarraNavegacion> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+
+    admobReward = AdmobReward(
+        adUnitId: "ca-app-pub-3940256099942544/5224354917",
+        listener: (AdmobAdEvent event, Map<String, dynamic> args) {
+          if (event == AdmobAdEvent.closed) {
+            admobReward.load();
+          }
+        });
+    admobReward.load();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final paramsProvider = Provider.of<ParametrosProvider>(context);
     return Scaffold(
-      body: Center(
-        child: _children[_currentIndex],
+      body: Scaffold(
+        body: Center(
+          child: _children[_currentIndex],
+        ),
+        bottomNavigationBar: barraNavegacionInferior(paramsProvider),
       ),
-      bottomNavigationBar: barraNavegacionInferior(paramsProvider),
+      bottomNavigationBar:
+          AdMobBanner(parametro: paramsProvider.colorBarraInferior.clave),
     );
   }
 
@@ -68,15 +89,25 @@ class _BarraNavegacionState extends State<BarraNavegacion> {
     );
   }
 
-  void onTabTapped(int index) {
-    if (index == 3) {
-      Navigator.of(context).pop();
-    } else {
-      setState(
-        () {
-          _currentIndex = index;
-        },
-      );
+  void onTabTapped(int index) async {
+    switch (index) {
+      case 2:
+        if (await admobReward.isLoaded) admobReward.show();
+        setState(
+          () {
+            _currentIndex = index;
+          },
+        );
+        break;
+      case 3:
+        Navigator.of(context).pop();
+        break;
+      default:
+        setState(
+          () {
+            _currentIndex = index;
+          },
+        );
     }
   }
 }

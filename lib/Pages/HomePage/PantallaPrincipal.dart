@@ -1,3 +1,4 @@
+import 'package:botonera_app/Pages/Anuncios/AdMobBanner.dart';
 import 'package:botonera_app/Pages/HomePage/Botones/BotonConfiguracion.dart';
 import 'package:botonera_app/Pages/HomePage/Botones/BotonCreditos.dart';
 import 'package:botonera_app/Pages/HomePage/Botones/BotonSalir.dart';
@@ -28,6 +29,8 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
         ),
         child: MenuPrincipal(),
       ),
+      bottomNavigationBar:
+          AdMobBanner(parametro: paramsProvider.colorFondoMenu.clave),
     );
   }
 }
